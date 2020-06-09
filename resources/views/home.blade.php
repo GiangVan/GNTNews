@@ -79,7 +79,10 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/admin') }}">Admin</a>
+						@if ($user->role === 'admin')
+						<a href="{{ url('/admin') }}">Admin</a>
+						@endif
+						<a href="{{ url('/myposts') }}">My posts</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -106,8 +109,7 @@
                             <tr>
                                 <td>{{ $poster->title }}</td>
                                 <td>
-                                    <textarea name="{{ $poster->id }}">{{ $poster->content }}</textarea>
-                                    <script>CKEDITOR.replace('{{ $poster->id }}');</script>
+                                    <div name="{{ $poster->id }}">{!! $poster->content !!}</div>
                                     <style>#cke_{{ $count }}_top, #cke_{{ $count }}_bottom{display:none}</style>
                                 </td>
                                 <td>{{ $poster->name }}</td>

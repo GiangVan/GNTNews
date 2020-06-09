@@ -16,9 +16,12 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function showAll(){
-        $category = DB::table('categories')->join('users', 'users.id', '=', 'categories.id_creator')->get(['categories.*', 'categories.id as category_id', 'users.*']);
-        $posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->where('users.id', '=', Auth::id())->get(['categories.title as categorytitle','posters.id as poster_id', 'categories.id as category_id', 'users.*', 'posters.*']);
-        return view('admin', compact('posters', 'category'));
-    }
+
+
+	public function showAll()
+	{
+		$category = DB::table('categories')->join('users', 'users.id', '=', 'categories.id_creator')->get(['categories.*', 'categories.id as category_id', 'users.*']);
+		$posters = Poster::all();
+		return view('admin', compact('posters', 'category'));
+	}
 }

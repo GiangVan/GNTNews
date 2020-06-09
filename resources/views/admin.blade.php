@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Your posters</div>
+                <div class="card-header">Posts</div>
                 <div class="content">
                     @if (count($posters))       
                         <table style="text-align:left">
@@ -14,7 +14,8 @@
                                 <th>Content</th>
                                 <th>Category</th>
                                 <th>View</th>
-                                <th></th>
+                                <th>id_approver</th>
+                                <th>#</th>
                             </tr>
                             <?php $count = 0; ?>
                             @foreach ($posters as $poster)
@@ -22,16 +23,20 @@
                                 <tr>
                                     <td>{{ $poster->title }}</td>
                                     <td>
-                                        <textarea name="{{ $poster->poster_id }}">{{ $poster->content }}</textarea>
-                                        <script>CKEDITOR.replace('{{ $poster->poster_id }}');</script>
+                                        <div name="{{ $poster->id }}">{!! $poster->content !!}</div>
                                         <style>#cke_{{ $count }}_top, #cke_{{ $count }}_bottom{display:none}</style>
                                     </td>
                                     <td>{{ $poster->categorytitle }}</td>
                                     <td>{{ $poster->viewnumber }}</td>
+									@if ($poster->id_approver)
+                                    <td>{{ $poster->id_approver }}</td>
+									@else
+                                        <td><a href="/poster/approve/{{ $poster->id }}" class="btn btn-success">approve</a></td>
+									@endif
                                     <td class="btn-list">
-                                        <a href="/poster/view/{{ $poster->poster_id }}" class="btn btn-warning">View</a>
-                                        <a href="/poster/edit/{{ $poster->poster_id }}" class="btn btn-primary">Edit</a>
-                                        <a href="/poster/delete/{{ $poster->poster_id }}" class="btn btn-danger">Delete</a>
+                                        <a href="/poster/view/{{ $poster->id }}" class="btn btn-warning">View</a>
+                                        <a href="/poster/edit/{{ $poster->id }}" class="btn btn-primary">Edit</a>
+                                        <a href="/poster/delete/{{ $poster->id }}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -43,6 +48,7 @@
                 </div>
             </div>
 
+			@if ($category)
             <div class="card">
                 <div class="card-header">Categories</div>
                 <div class="content">
@@ -69,7 +75,8 @@
                     @endif
                     <a href="/category/add" style="margin:10px" class="btn btn-primary">Add</a>
                 </div>
-            </div>
+			</div>
+			@endif
         </div>
     </div>
 </div>

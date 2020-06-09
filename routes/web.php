@@ -16,11 +16,13 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/admin', 'AdminController@showAll');
 
+Route::get('/poster/approve/{id}', 'PosterManagementController@approve');
 Route::get('/poster/edit/{id}', 'PosterManagementController@showEditingPage');
 Route::post('/poster/edit', 'PosterManagementController@edit');
 Route::get('/poster/delete/{id}', 'PosterManagementController@delete');
 Route::get('/poster/add', 'PosterManagementController@showAddingPage');
 Route::post('/poster/add', 'PosterManagementController@add');
+Route::get('/myposts', 'PosterManagementController@showAll');
 
 Route::get('/poster/view/{id}', 'HomeController@showDetailPoster');
 

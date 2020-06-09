@@ -26,7 +26,24 @@ class PosterManagementController extends Controller
         {
             return view('redirect', ['url' => '/admin']);
         }
-    }
+	}
+
+	public function approve($id){
+		if(Auth::user()->role === 'admin'){
+			$poster = Poster::find($id);
+			$poster->id_approver = Auth::id();
+			if($poster->save()){
+				return view('redirect', ['url' => '/admin']);
+			}
+		}
+	}
+
+
+	public function showAll()
+	{
+		$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->where('users.id', '=', Auth::id())->get(['categories.title as categorytitle', 'posters.id as poster_id', 'categories.id as category_id', 'users.*', 'posters.*']);
+		return view('myposts', compact('posters'));
+	}
 
     public function delete($id){
         foreach (User::find(Auth::id())->posters->where('id', '=', $id) as $value) {

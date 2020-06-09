@@ -13,30 +13,35 @@ use App\Poster;
 
 class HomeController extends Controller
 {
-    public function index(){
-        $posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->get(['categories.title as categorytitle', 'users.*', 'posters.*']);
-        return view('home', compact('posters'));
-    }
+	public function index()
+	{
+		$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->whereNotNull('posters.id_approver')->get(['categories.title as categorytitle', 'users.*', 'posters.*']);
+		$user = Auth::user();
+		return view('home', compact('posters', 'user'));
+	}
 
-    public function showDetailPoster($id){
-        $poster = Poster::find($id);
-        $poster->viewnumber = $poster->viewnumber + 1;
-        $poster->save();
-        return view('poster/view', compact('poster'));
-    }
+	public function showDetailPoster($id)
+	{
+		$poster = Poster::find($id);
+		if ($poster->approver) {
+			$poster->viewnumber = $poster->viewnumber + 1;
+			$poster->save();
+			return view('poster/view', compact('poster'));
+		}
+	}
 
 
-    
-    // public function speedtest(){
-    //     for ($i=0; $i < 1000; $i++) { 
-    //         $result = Account::selectRaw('account.*, login_session.*, account_bound.*')
-    //                             ->join('login_session', 'account.id_account', '=', 'login_session.id_account')
-    //                             ->join('account_bound', 'account.id_account', '=', 'account_bound.id_sender')
-    //                             ->where('account.id_account', '>', '0')
-    //                             ->where('login_session.id_account', '>', '0')
-    //                             ->limit(10000)
-    //                             ->get();
-    //     }
-    //     return $result;
-    // }
+
+	// public function speedtest(){
+	//     for ($i=0; $i < 1000; $i++) { 
+	//         $result = Account::selectRaw('account.*, login_session.*, account_bound.*')
+	//                             ->join('login_session', 'account.id_account', '=', 'login_session.id_account')
+	//                             ->join('account_bound', 'account.id_account', '=', 'account_bound.id_sender')
+	//                             ->where('account.id_account', '>', '0')
+	//                             ->where('login_session.id_account', '>', '0')
+	//                             ->limit(10000)
+	//                             ->get();
+	//     }
+	//     return $result;
+	// }
 }
