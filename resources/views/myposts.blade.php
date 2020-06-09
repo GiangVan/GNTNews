@@ -10,6 +10,10 @@
 	}
 </style>
 
+<?php
+	$user = Auth::user();
+?>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -38,7 +42,9 @@
                                     <td>{{ $poster->viewnumber }}</td>
                                     <td class="btn-list">
                                         <a href="/poster/view/private/{{ $poster->id }}" class="btn btn-warning">View</a>
-                                        <a href="/poster/edit/{{ $poster->id }}" class="btn btn-primary">Edit</a>
+                                        @if ($user->role === 'admin' || $poster->id_approver === null)
+											<a href="/poster/edit/{{ $poster->id }}" class="btn btn-primary">Edit</a>
+										@endif
                                         <a href="/poster/delete/{{ $poster->id }}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>

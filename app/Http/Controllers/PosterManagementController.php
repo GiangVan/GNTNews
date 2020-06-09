@@ -71,7 +71,10 @@ class PosterManagementController extends Controller
         $poster->title = $request->title;
         $poster->content = $request->content;
         $poster->id_category = $request->category;
-        $poster->id_creator = Auth::id();
+		$poster->id_creator = Auth::id();
+		if(Auth::user()->role === 'admin'){
+			$poster->id_approver = Auth::id();
+		}
 
         $poster->save();
 
@@ -79,12 +82,14 @@ class PosterManagementController extends Controller
     }
 
     public function edit(Request $request){
-        if($this->checkPosterExist($request->id) !== false){
+        if($this->checkPosterExist($request->id)){
             $poster = Poster::find($request->id);
-            $poster->title = $request->title;
-            $poster->content = $request->content;
-            $poster->id_category = $request->category;
-            $poster->save();
+            if(Auth::user()->role === 'admin' || $poster->id_approver === null){
+				$poster->title = $request->title;
+				$poster->content = $request->content;
+				$poster->id_category = $request->category;
+				$poster->save();
+			}
         }
         return view('redirect', ['url' => '/myposts']);
     }
