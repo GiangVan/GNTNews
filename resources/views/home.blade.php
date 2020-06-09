@@ -70,6 +70,15 @@
                 padding: 15px;
             }
         </style>
+		
+		<style>
+			.post-content{
+				width: 300px;
+				height: 200px;
+				overflow: hidden;
+				position: relative;
+			}
+		</style>
 
         <!-- ckeditor -->
         <script src="/ckeditor/ckeditor.js"></script>
@@ -109,7 +118,7 @@
                             <tr>
                                 <td>{{ $poster->title }}</td>
                                 <td>
-                                    <div name="{{ $poster->id }}">{!! $poster->content !!}</div>
+                                    <div class='post-content' name="{{ $poster->id }}">{!! $poster->content !!}</div>
                                     <style>#cke_{{ $count }}_top, #cke_{{ $count }}_bottom{display:none}</style>
                                 </td>
                                 <td>{{ $poster->name }}</td>

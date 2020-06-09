@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+	.post-content{
+		width: 300px;
+		height: 200px;
+		overflow: hidden;
+		position: relative;
+	}
+</style>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -23,7 +32,7 @@
                                 <tr>
                                     <td>{{ $poster->title }}</td>
                                     <td>
-                                        <div name="{{ $poster->id }}">{!! $poster->content !!}</div>
+                                        <div class='post-content' name="{{ $poster->id }}">{!! $poster->content !!}</div>
                                         <style>#cke_{{ $count }}_top, #cke_{{ $count }}_bottom{display:none}</style>
                                     </td>
                                     <td>{{ $poster->categorytitle }}</td>
