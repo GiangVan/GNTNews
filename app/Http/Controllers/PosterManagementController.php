@@ -46,10 +46,16 @@ class PosterManagementController extends Controller
 	}
 
     public function delete($id){
-        foreach (User::find(Auth::id())->posters->where('id', '=', $id) as $value) {
-            $value->delete();
-        }
-        return view('redirect', ['url' => '/admin']);
+		if(Auth::user()->role === 'admin'){
+			Poster::find($id)->delete();
+			return view('redirect', ['url' => '/myposts']);
+		} else {
+			$poster = Poster::find($id);
+			if($poster && $poster->id_creator === Auth::id()){
+				$poster->delete();
+				return view('redirect', ['url' => '/myposts']);
+			}
+		}
     }
 
     public function showAddingPage(){
@@ -66,7 +72,7 @@ class PosterManagementController extends Controller
 
         $poster->save();
 
-        return view('redirect', ['url' => '/admin']);
+        return view('redirect', ['url' => '/myposts']);
     }
 
     public function edit(Request $request){
@@ -77,7 +83,7 @@ class PosterManagementController extends Controller
             $poster->id_category = $request->category;
             $poster->save();
         }
-        return view('redirect', ['url' => '/admin']);
+        return view('redirect', ['url' => '/myposts']);
     }
 
     public function apiget(Request $request){
