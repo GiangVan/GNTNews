@@ -23,7 +23,7 @@ class HomeController extends Controller
 	public function showDetailPoster($id)
 	{
 		$poster = Poster::find($id);
-		if ($poster->approver) {
+		if ($poster->id_approver) {
 			$poster->viewnumber = $poster->viewnumber + 1;
 			$poster->save();
 			return view('poster/view', compact('poster'));
