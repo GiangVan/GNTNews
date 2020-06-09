@@ -14,6 +14,8 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- my css -->
+	<link href="/my_CSS.css" rel="stylesheet">
     <!-- bootstrap -->
 	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	

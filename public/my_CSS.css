@@ -1,0 +1,1650 @@
+* {
+	margin: 0;
+	padding: 0;
+	line-height: 1.2;
+}
+
+:root {
+	font-size: 16px
+}
+
+#define {
+	--blue: steelblue;
+	/* g */
+	--yellow: #e4b527;
+	/* g */
+	--purple: #8047a4;
+	/* g */
+	--green: #409c55;
+	/* g */
+	--dim-gray: #646464;
+	--gray: #a3a3a3;
+	/* g */
+	--smoke: #cccccc;
+	--light-gray: #e5e5e5;
+	--teal: teal;
+	/* g */
+	--pink: #d27da1;
+	/* g */
+	--white: whitesmoke;
+	/* g */
+	--orange: #db6935;
+	/* g */
+	--red: #de4747;
+	/* g */
+	--black: rgb(55, 55, 55);
+	/* g */
+	--shadow: 1px 3px 4px rgba(0, 0, 0, .5) inset, 1px 3px 3px rgba(0, 0, 0, .5);
+	--light-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15)!important;
+	--light-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, .175)!important;
+}
+
+li {
+	list-style-type: none
+}
+
+input, textarea {
+	outline: none
+}
+
+textarea {
+	overflow: hidden;
+	resize: none;
+}
+
+textarea {
+	resize: none
+}
+
+a {
+	text-decoration: none
+}
+
+/* Button */
+
+.btn {
+	border: solid 1px rgba(0, 0, 0, .2);
+}
+
+/* button color */
+
+.btn.blue {
+	background-color: steelblue
+}
+
+/* Hover */
+
+.hover-scale-05 {
+	box-shadow: 0 0 0 rgba(0, 0, 0, .3), 0 0 1px white inset;
+	transition: all 0.65s ease;
+	cursor: pointer;
+}
+
+.hover-scale-05:hover {
+	box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175), 0 0 1px white inset;
+	transform: scale(1.05);
+}
+
+
+/* Table */
+
+.table {
+	width: 100%
+}
+
+.table * {
+	text-align: left
+}
+
+.table thead {
+	color: #373737
+}
+
+.table thead tr th {
+	padding: 13px 5px
+}
+
+.table thead tr th:last-child {
+	padding-right: 10px
+}
+
+.table thead tr th:first-child {
+	padding-left: 10px
+}
+
+.table tbody {
+	color: #646464
+}
+
+.table tbody tr:last-child() {
+	border-bottom: solid 1px gainsboro
+}
+
+.table tbody tr td {
+	padding: 6px 5px;
+	word-break: break-word;
+}
+
+.table tbody tr td:first-child {
+	padding-left: 10px
+}
+
+.table tbody tr td:last-child {
+	padding-right: 10px
+}
+
+/* Table - Floating */
+
+.table.floating thead {
+	background-color: #a3a3a3;
+	color: whitesmoke;
+	box-shadow: 1px 3px 4px rgba(0, 0, 0, .5);
+}
+
+/* Table - Color */
+
+.table.gray thead, .table.green thead, .table.blue thead, .table.pink thead, .table.yellow thead, .table.orange thead, .table.red thead, .table.purple thead, .table.black thead, .table.teal thead {
+	color: whitesmoke
+}
+
+.table.white thead {
+	color: #373737
+}
+
+.table.gray thead {
+	/* gray */
+	background-color: #a3a3a3
+}
+
+.table.green thead {
+	/* green */
+	background-color: #409c55
+}
+
+.table.blue thead {
+	/* blue */
+	background-color: steelblue
+}
+
+.table.pink thead {
+	/* pink */
+	background-color: #d27da1
+}
+
+.table.yellow thead {
+	/* yellow */
+	background-color: #e4b527
+}
+
+.table.orange thead {
+	/* orange */
+	background-color: #db6935
+}
+
+.table.red thead {
+	/* red */
+	background-color: #de4747
+}
+
+.table.purple thead {
+	/* purple */
+	background-color: #8047a4
+}
+
+.table.teal thead {
+	/* teal */
+	background-color: teal
+}
+
+.table.black thead {
+	/* black */
+	background-color: #373737
+}
+
+.table.white thead {
+	/* white */
+	background-color: whitesmoke
+}
+
+/* Horizontal table */
+
+.hor-table {
+	width: 100%
+}
+
+.hor-table tr th {
+	color: #373737
+}
+
+.hor-table tr td {
+	color: #646464
+}
+
+.hor-table tr td, .hor-table tr th {
+	padding: 10px;
+	text-align: left;
+}
+
+.hor-table tr td, .hor-table tr th {
+	border-bottom: solid 1px rgba(0, 0, 0, .07)
+}
+
+.hor-table tr:last-child td, .hor-table tr:last-child th {
+	border-bottom: 0
+}
+
+/* Horizontal table - Floating */
+
+.hor-table.floating {
+	padding: 9px;
+	border: solid 4px #a3a3a3;
+	box-shadow: 1px 3px 4px rgba(0, 0, 0, .5) inset, 1px 3px 3px rgba(0, 0, 0, .5);
+}
+
+/* Horizontal table - Color */
+
+.hor-table.blue {
+	/* blue */
+	border: solid 4px steelblue
+}
+
+.hor-table.green {
+	/* green */
+	border: solid 4px #409c55
+}
+
+.hor-table.teal {
+	/* teal */
+	border: solid 4px teal
+}
+
+.hor-table.red {
+	/* red */
+	border: solid 4px #de4747
+}
+
+.hor-table.orange {
+	/* orange */
+	border: solid 4px #db6935
+}
+
+.hor-table.pink {
+	/* pink */
+	border: solid 4px #d27da1
+}
+
+.hor-table.gray {
+	/* gray */
+	border: solid 4px #a3a3a3
+}
+
+.hor-table.yellow {
+	/* yellow */
+	border: solid 4px #e4b527
+}
+
+.hor-table.purple {
+	/* purple */
+	border: solid 4px #8047a4
+}
+
+.hor-table.black {
+	/* black */
+	border: solid 4px #373737
+}
+
+.hor-table.white {
+	/* white */
+	border: solid 4px whitesmoke
+}
+
+/* Stripe table */
+
+.striped-light-gray tbody tr:nth-child(2n) {
+	/* light gray */
+	background-color: #e5e5e5
+}
+
+.striped-gray tbody tr:nth-child(2n) {
+	/* gray */
+	background-color: #a3a3a3
+}
+
+.striped-blue tbody tr:nth-child(2n) {
+	/* blue */
+	background-color: steelblue
+}
+
+/* Comment */
+
+.comment {
+	display: flex;
+	padding: 5px 5px 24px 5px;
+	position: relative;
+}
+
+.comment * {
+	color: #646464
+}
+
+.comment .owner-avatar {
+	flex: none;
+	width: 42px;
+	height: 42px;
+	margin: 1px 5px 0 0;
+	box-sizing: border-box;
+	background-size: cover;
+	background-position: center;
+}
+
+.comment .body {
+	flex: auto;
+	min-width: 0;
+	background-color: rgba(0, 0, 0, .05);
+	padding: 1px 3px 5px 5px;
+	position: relative;
+}
+
+.comment .body .btn-dropdown {
+	text-align: center;
+	padding: 4px;
+	top: 5px;
+	right: 5px;
+	z-index: 1;
+	position: absolute;
+}
+
+.comment .body .owner-name {
+	margin-right: 30px;
+	min-height: 20px;
+	font-weight: bold;
+	font-size: .8rem;
+}
+
+.comment .body .content {
+	padding-top: 2px;
+	font-size: 1.1rem;
+	white-space: pre-line;
+	word-wrap: break-word;
+}
+
+.comment .body .content:empty {
+	height: 26px
+}
+
+.comment .body .tool-bar {
+	width: 100%;
+	bottom: -24px;
+	position: absolute;
+	left: 4px;
+}
+
+.comment .body .tool-bar * {
+	padding-right: 6px;
+	display: inline-block;
+	font-size: .9rem;
+	opacity: .9;
+}
+
+.comment .body .created-at {
+	bottom: 0;
+	position: absolute;
+}
+
+/* Comment - Lite */
+
+.comment.lite .body {
+	background-color: transparent
+}
+
+/* Comment - Child */
+
+.comment.child {
+	margin-left: 53px;
+	margin-top: 0;
+}
+
+/* Respotive */
+
+@media screen and (max-width: 800px) {
+	.comment {
+		padding-bottom: 29px
+	}
+	.comment .body .tool-bar {
+		bottom: -23px
+	}
+	.comment .body .tool-bar *:not(.created-at) {
+		font-size: 1.2rem;
+		opacity: .7;
+	}
+	.comment .body .content {
+		font-size: 1.2rem
+	}
+}
+
+/* Comment - Floating */
+
+.comment.floating .owner-avatar {
+	box-sizing: border-box;
+	border: solid 1px #a3a3a3;
+	box-shadow: 1px 3px 4px rgba(0, 0, 0, .5) inset, 1px 3px 3px rgba(0, 0, 0, .5);
+}
+
+.comment.floating.blue .owner-avatar, .comment.floating.gray .owner-avatar, .comment.floating.black .owner-avatar, .comment.floating.orange .owner-avatar, .comment.floating.purple .owner-avatar, .comment.floating.red .owner-avatar, .comment.floating.white .owner-avatar, .comment.floating.teal .owner-avatar, .comment.floating.green .owner-avatar, .comment.floating.yellow .owner-avatar, .comment.floating.pink .owner-avatar {
+	border-width: 1px
+}
+
+/* Comment - Hover */
+
+.comment.hover, .comment.hover .body .btn-dropdown, .comment.hover .body .created-at, .comment.hover .body {
+	transition: all .7s ease
+}
+
+.comment.hover .body .btn-dropdown {
+	opacity: 0;
+	top: 0;
+	right: 0;
+}
+
+.comment.hover .body .created-at {
+	opacity: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.comment.hover:hover {
+	background-color: rgba(0, 0, 0, .1)
+}
+
+.comment.hover:hover .body {
+	background-color: transparent
+}
+
+.comment.hover:hover .body .btn-dropdown, .comment.hover:hover .body .created-at {
+	opacity: 1
+}
+
+/* Comment - Color */
+
+.comment.gray .owner-avatar {
+	/* gray */
+	border: solid 2px #a3a3a3
+}
+
+.comment.gray .body .owner-name {
+	color: #a3a3a3
+}
+
+.comment.gray .body .owner-name {
+	color: #a3a3a3
+}
+
+.comment.gray .body *:not(.owner-name) {
+	color: #a3a3a3
+}
+
+.comment.blue .owner-avatar {
+	/* blue */
+	border: solid 2px steelblue
+}
+
+.comment.blue .body .owner-name {
+	color: steelblue
+}
+
+.comment.blue .body .owner-name {
+	color: steelblue
+}
+
+.comment.blue .body *:not(.owner-name) {
+	color: #646464
+}
+
+.comment.teal .owner-avatar {
+	/* teal */
+	border: solid 3px teal
+}
+
+.comment.teal .body .owner-name {
+	color: teal
+}
+
+.comment.teal .body .owner-name {
+	color: teal
+}
+
+.comment.teal .body *:not(.owner-name) {
+	color: #646464
+}
+
+.comment.green .owner-avatar {
+	/* green */
+	border: solid 2px #409c55
+}
+
+.comment.green .body .owner-name {
+	color: #409c55
+}
+
+.comment.green .body .owner-name {
+	color: #409c55
+}
+
+.comment.green .body *:not(.owner-name) {
+	color: #646464
+}
+
+.comment.yellow .owner-avatar {
+	/* yellow */
+	border: solid 2px #e4b527
+}
+
+.comment.yellow .body .owner-name {
+	color: #e4b527
+}
+
+.comment.yellow .body .owner-name {
+	color: #e4b527
+}
+
+.comment.yellow .body *:not(.owner-name) {
+	color: #646464
+}
+
+.comment.orange .owner-avatar {
+	/* orange */
+	border: solid 2px #db6935
+}
+
+.comment.orange .body .owner-name {
+	color: #db6935
+}
+
+.comment.orange .body .owner-name {
+	color: #db6935
+}
+
+.comment.orange .body *:not(.owner-name) {
+	color: #646464
+}
+
+.comment.orange .owner-avatar {
+	/* orange */
+	border: solid 2px #db6935
+}
+
+.comment.orange .body .owner-name {
+	color: #db6935
+}
+
+.comment.orange .body .owner-name {
+	color: #db6935
+}
+
+.comment.orange .body *:not(.owner-name) {
+	color: #646464
+}
+
+.comment.red .owner-avatar {
+	/* red */
+	border: solid 2px #de4747
+}
+
+.comment.red .body .owner-name {
+	color: #de4747
+}
+
+.comment.red .body .owner-name {
+	color: #de4747
+}
+
+.comment.red .body *:not(.owner-name) {
+	color: #646464
+}
+
+.comment.purple .owner-avatar {
+	/* purple */
+	border: solid 2px #8047a4
+}
+
+.comment.purple .body .owner-name {
+	color: #8047a4
+}
+
+.comment.purple .body .owner-name {
+	color: #8047a4
+}
+
+.comment.purple .body *:not(.owner-name) {
+	color: #646464
+}
+
+.comment.pink .owner-avatar {
+	/* pink */
+	border: solid 2px #d27da1
+}
+
+.comment.pink .body .owner-name {
+	color: #d27da1
+}
+
+.comment.pink .body .owner-name {
+	color: #d27da1
+}
+
+.comment.pink .body *:not(.owner-name) {
+	color: #646464
+}
+
+.comment.white .owner-avatar {
+	/* white */
+	border: solid 2px whitesmoke
+}
+
+.comment.white .body .owner-name {
+	color: whitesmoke
+}
+
+.comment.white .body .owner-name {
+	color: whitesmoke
+}
+
+.comment.white .body *:not(.owner-name) {
+	color: #646464
+}
+
+/* Reply */
+
+.reply {
+	display: flex;
+	align-items: center;
+	padding-left: 5px;
+	margin-top: 6px;
+}
+
+.reply .avatar {
+	flex: none;
+	min-width: 42px;
+	width: 42px;
+	height: 42px;
+	margin-right: 5px;
+	box-sizing: border-box;
+	background-size: cover;
+	background-position: left;
+}
+
+.reply .btn-submit {
+	flex: none;
+	width: 42px;
+	text-align: center;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.reply .body {
+	flex: auto;
+	min-width: 0;
+	height: 42px;
+	box-sizing: border-box;
+	display: flex;
+	padding: 0 9px;
+	flex-grow: 1;
+	align-items: center;
+	border: 1px solid #c3c3c3;
+}
+
+.reply .body *:not(.content) {
+	padding: 5px
+}
+
+.reply .body .content {
+	min-width: 0;
+	color: rgba(0, 0, 0, .7);
+	font-size: 1.1rem;
+	flex-grow: 1;
+	background-color: transparent;
+	border: none;
+}
+
+/* Reply - Floating */
+
+.reply.floating .body, .reply.floating .avatar {
+	border: solid 1px #a3a3a3;
+	box-shadow: 1px 3px 4px rgba(0, 0, 0, .5) inset, 1px 3px 3px rgba(0, 0, 0, .5);
+}
+
+.reply.floating.blue .avatar, .reply.floating.red .avatar, .reply.floating.gray .avatar, .reply.floating.white .avatar, .reply.floating.black .avatar, .reply.floating.green .avatar, .reply.floating.teal .avatar, .reply.floating.pink .avatar, .reply.floating.purple .avatar, .reply.floating.orange .avatar, .reply.floating.yellow .avatar {
+	border-width: 1px
+}
+
+/* Reply - Child */
+
+.reply.child {
+	margin-left: 53px
+}
+
+/* Reply - Color */
+
+.reply.gray .avatar {
+	/* gray */
+	border: solid 2px #a3a3a3
+}
+
+.reply.gray .body {
+	border: solid 1px #a3a3a3;
+}
+
+.reply.blue .avatar {
+	/* blue */
+	border: solid 2px steelblue
+}
+
+.reply.blue .body {
+	border: solid 1px steelblue
+}
+
+.reply.orange .avatar {
+	/* orange */
+	border: solid 2px #db6935
+}
+
+.reply.orange .body {
+	border: solid 1px #db6935
+}
+
+.reply.yellow .avatar {
+	/* yellow */
+	border: solid 2px #e4b527
+}
+
+.reply.yellow .body {
+	border: solid 1px #e4b527
+}
+
+.reply.teal .avatar {
+	/* teal */
+	border: solid 2px teal
+}
+
+.reply.teal .body {
+	border: solid 1px teal
+}
+
+.reply.black .avatar {
+	/* black */
+	border: solid 2px #373737
+}
+
+.reply.black .body {
+	border: solid 1px #373737
+}
+
+.reply.purple .avatar {
+	/* purple */
+	border: solid 2px #8047a4
+}
+
+.reply.purple .body {
+	border: solid 1px #8047a4
+}
+
+.reply.red .avatar {
+	/* red */
+	border: solid 2px #de4747
+}
+
+.reply.red .body {
+	border: solid 1px #de4747
+}
+
+.reply.pink .avatar {
+	/* pink */
+	border: solid 2px #d27da1
+}
+
+.reply.pink .body {
+	border: solid 1px #d27da1
+}
+
+.reply.green .avatar {
+	/* green */
+	border: solid 2px #409c55
+}
+
+.reply.green .body {
+	border: solid 1px #409c55
+}
+
+.reply.white .avatar {
+	/* white */
+	border: solid 2px whitesmoke
+}
+
+.reply.white .body {
+	border: solid 1px whitesmoke
+}
+
+/* Profile header */
+
+.profile-header {
+	display: flex;
+	padding: 20px 30px;
+	background-color: #e5e5e5;
+	min-width: 500px;
+}
+
+.profile-header .user-avatar {
+	flex: none;
+	width: 128px;
+	height: 128px;
+	background-size: cover;
+	background-position: center;
+	border: solid 5px #a3a3a3;
+}
+
+.profile-header .body {
+	flex: auto;
+	min-width: 0;
+	margin-left: 15px;
+}
+
+.profile-header .body .user-name {
+	font-size: 1.9rem;
+	color: #a3a3a3;
+	white-space: pre;
+	margin-top: 6px;
+	overflow: hidden;
+	font-weight: bold;
+}
+
+.profile-header .body .describe {
+	height: 90px;
+	width: 300px;
+	overflow: hidden;
+	transition: all .6s ease;
+	position: relative;
+	color: #a3a3a3;
+}
+
+.profile-header .body .describe .content {
+	font-weight: bold;
+	white-space: pre-line;
+	word-wrap: break-word;
+	box-sizing: border-box;
+	height: 100%;
+	padding: 5px;
+	opacity: .8;
+}
+
+.profile-header .body .describe:hover {
+	background-color: gainsboro
+}
+
+.profile-header .body .describe:hover .btn-edit {
+	opacity: 1
+}
+
+.profile-header .body .describe .btn-edit {
+	transition: all .6s ease;
+	cursor: pointer;
+	opacity: 0;
+	padding: 4px;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	position: absolute;
+}
+
+@media screen and (max-width: 500px) {
+	.profile-header {
+		min-width: 0;
+	}
+	.profile-header .body .user-name {
+		white-space: pre-line;
+		word-break: break-word;
+		max-height: 140px;
+	}
+	.profile-header .body .describe {
+		width: auto;
+		height: auto;
+		min-height: 90px;
+	}
+}
+
+/* Profile header - Floating */
+
+.profile-header.floating .user-avatar {
+	box-shadow: 1px 3px 4px rgba(0, 0, 0, .5) inset, 1px 3px 3px rgba(0, 0, 0, .5)
+}
+
+/* Profile header - Color */
+
+.profile-header.blue .user-name {
+	/* blue */
+	color: steelblue
+}
+
+.profile-header.blue .user-avatar {
+	border: solid 5px steelblue
+}
+
+.profile-header.red .user-name {
+	/* red */
+	color: #de4747
+}
+
+.profile-header.red .user-avatar {
+	border: solid 5px #de4747
+}
+
+.profile-header.green .user-name {
+	/* green */
+	color: #409c55
+}
+
+.profile-header.green .user-avatar {
+	border: solid 5px #409c55
+}
+
+.profile-header.orange .user-name {
+	/* orange */
+	color: #db6935
+}
+
+.profile-header.orange .user-avatar {
+	border: solid 5px #db6935
+}
+
+.profile-header.black .user-name {
+	/* black */
+	color: #373737
+}
+
+.profile-header.black .user-avatar {
+	border: solid 5px #373737
+}
+
+.profile-header.yellow .user-name {
+	/* yellow */
+	color: #e4b527
+}
+
+.profile-header.yellow .user-avatar {
+	border: solid 5px #e4b527
+}
+
+.profile-header.pink .user-name {
+	/* pink */
+	color: #d27da1
+}
+
+.profile-header.pink .user-avatar {
+	border: solid 5px #d27da1
+}
+
+.profile-header.purple .user-name {
+	/* purple */
+	color: #8047a4
+}
+
+.profile-header.purple .user-avatar {
+	border: solid 5px #8047a4
+}
+
+/* Tab */
+
+.tab {
+	display: block;
+	border: solid 1px rgba(0, 0, 0, .15);
+	border-left: solid 6px;
+	border-bottom: solid 2px;
+	border-left-color: #646464;
+	border-bottom-color: #646464;
+	padding: 0 4px;
+	position: relative;
+}
+
+.tab *:not(.title) {
+	color: #a3a3a3
+}
+
+.tab .title {
+	font-weight: bold;
+	font-size: 1.25rem;
+	text-align: left;
+	color: #646464;
+}
+
+.tab .content {
+	white-space: pre-line;
+	word-break: break-word;
+}
+
+.tab .created-at {
+	margin-right: 5px;
+	right: 0;
+	top: 0;
+	position: absolute;
+}
+
+/* Tab - Color */
+
+.tab.blue {
+	/* blue */
+	border-left-color: steelblue;
+	border-bottom-color: steelblue;
+}
+
+.tab.blue .title {
+	color: steelblue
+}
+
+.tab.yellow {
+	/* yellow */
+	border-left-color: #e4b527;
+	border-bottom-color: #e4b527;
+}
+
+.tab.yellow .title {
+	color: #e4b527
+}
+
+.tab.purple {
+	/* purple */
+	border-left-color: #8047a4;
+	border-bottom-color: #8047a4;
+}
+
+.tab.purple .title {
+	color: #8047a4
+}
+
+.tab.green {
+	/* green */
+	border-left-color: #409c55;
+	border-bottom-color: #409c55;
+}
+
+.tab.green .title {
+	color: #409c55
+}
+
+.tab.teal {
+	/* teal */
+	border-left-color: teal;
+	border-bottom-color: teal;
+}
+
+.tab.teal .title {
+	color: teal
+}
+
+.tab.pink {
+	/* pink */
+	border-left-color: #d27da1;
+	border-bottom-color: #d27da1;
+}
+
+.tab.pink .title {
+	color: #d27da1
+}
+
+.tab.red {
+	/* red */
+	border-left-color: #de4747;
+	border-bottom-color: #de4747;
+}
+
+.tab.red .title {
+	color: #de4747
+}
+
+.tab.orange {
+	/* orange */
+	border-left-color: #db6935;
+	border-bottom-color: #db6935;
+}
+
+.tab.orange .title {
+	color: #db6935
+}
+
+.tab.black {
+	/* black */
+	border-left-color: #373737;
+	border-bottom-color: #373737;
+}
+
+.tab.black .title {
+	color: #373737
+}
+
+.tab.white {
+	/* white */
+	border-left-color: whitesmoke;
+	border-bottom-color: whitesmoke;
+}
+
+.tab.white .title {
+	color: whitesmoke
+}
+
+/* Curved */
+
+.curved-1 {
+	border-radius: 1px
+}
+
+.curved-2 {
+	border-radius: 2px
+}
+
+.curved-3 {
+	border-radius: 3px
+}
+
+.curved-4 {
+	border-radius: 4px
+}
+
+.curved-5 {
+	border-radius: 5px
+}
+
+.curved-6 {
+	border-radius: 6px
+}
+
+.curved-7 {
+	border-radius: 7px
+}
+
+.curved-8 {
+	border-radius: 8px
+}
+
+.curved-9 {
+	border-radius: 9px
+}
+
+.curved-10 {
+	border-radius: 10px
+}
+
+.curved-11 {
+	border-radius: 11px
+}
+
+.curved-12 {
+	border-radius: 12px
+}
+
+.curved-13 {
+	border-radius: 13px
+}
+
+.curved-14 {
+	border-radius: 14px
+}
+
+.curved-15 {
+	border-radius: 15px
+}
+
+.curved-16 {
+	border-radius: 16px
+}
+
+.curved-17 {
+	border-radius: 17px
+}
+
+.curved-18 {
+	border-radius: 18px
+}
+
+.curved-19 {
+	border-radius: 19px
+}
+
+.curved-20 {
+	border-radius: 20px
+}
+
+.curved-21 {
+	border-radius: 21px
+}
+
+.curved-22 {
+	border-radius: 22px
+}
+
+.curved-23 {
+	border-radius: 23px
+}
+
+.curved-24 {
+	border-radius: 24px
+}
+
+.curved-25 {
+	border-radius: 25px
+}
+
+.curved-26 {
+	border-radius: 26px
+}
+
+.curved-27 {
+	border-radius: 27px
+}
+
+.curved-28 {
+	border-radius: 28px
+}
+
+.curved-29 {
+	border-radius: 29px
+}
+
+.curved-30 {
+	border-radius: 30px
+}
+
+.curved-40 {
+	border-radius: 40px
+}
+
+.curved-50 {
+	border-radius: 50px
+}
+
+.curved-60 {
+	border-radius: 60px
+}
+
+.curved-70 {
+	border-radius: 70px
+}
+
+.curved-80 {
+	border-radius: 80px
+}
+
+.curved-90 {
+	border-radius: 90px
+}
+
+.curved-100 {
+	border-radius: 100px
+}
+
+/* Curved - Circle */
+
+.curved-circle {
+	border-radius: 999px
+}
+
+/* Text color */
+
+.text-gray, .text-gray * {
+	color: #a3a3a3
+}
+
+.text-smoke, .text-smoke * {
+	color: #cccccc
+}
+
+.text-orange, .text-orange * {
+	color: #db6935
+}
+
+.text-blue, .text-blue * {
+	color: steelblue
+}
+
+.text-green, .text-green * {
+	color: #409c55
+}
+
+.text-red, .text-red * {
+	color: #de4747
+}
+
+.text-white, .text-white * {
+	color: whitesmoke
+}
+
+.text-teal, .text-teal * {
+	color: teal
+}
+
+.text-purple, .text-purple * {
+	color: #8047a4
+}
+
+.text-yellow, .text-yellow * {
+	color: #e4b527
+}
+
+.text-pink, .text-pink * {
+	color: #d27da1
+}
+
+.text-black, .text-black * {
+	color: #373737
+}
+
+/* Text color - Important */
+
+.im-text-gray, .im-text-gray * {
+	color: #a3a3a3 !important
+}
+
+.im-text-smoke, .im-text-smoke * {
+	color: #cccccc !important
+}
+
+.im-text-orange, .im-text-orange * {
+	color: #db6935 !important
+}
+
+.im-text-blue, .im-text-blue * {
+	color: steelblue !important
+}
+
+.im-text-green, .im-text-green * {
+	color: #409c55 !important
+}
+
+.im-text-red, .im-text-red * {
+	color: #de4747 !important
+}
+
+.im-text-white, .im-text-white * {
+	color: whitesmoke !important
+}
+
+.im-text-teal, .im-text-teal * {
+	color: teal !important
+}
+
+.im-text-purple, .im-text-purple * {
+	color: #8047a4 !important
+}
+
+.im-text-yellow, .im-text-yellow * {
+	color: #e4b527 !important
+}
+
+.im-text-pink, .im-text-pink * {
+	color: #d27da1 !important
+}
+
+.im-text-black, .im-text-black * {
+	color: #373737 !important
+}
+
+/* Font size */
+
+.text-size-01, .text-size-01 * {
+	font-size: .1rem
+}
+
+.text-size-02, .text-size-02 * {
+	font-size: .2rem
+}
+
+.text-size-03, .text-size-03 * {
+	font-size: .3rem
+}
+
+.text-size-04, .text-size-04 * {
+	font-size: .4rem
+}
+
+.text-size-05, .text-size-05 * {
+	font-size: .5rem
+}
+
+.text-size-06, .text-size-06 * {
+	font-size: .6rem
+}
+
+.text-size-07, .text-size-07 * {
+	font-size: .7rem
+}
+
+.text-size-08, .text-size-08 * {
+	font-size: .8rem
+}
+
+.text-size-09, .text-size-09 * {
+	font-size: .9rem
+}
+
+.text-size-10, .text-size-10 * {
+	font-size: 1rem
+}
+
+.text-size-11, .text-size-11 * {
+	font-size: 1.1rem
+}
+
+.text-size-12, .text-size-12 * {
+	font-size: 1.2rem
+}
+
+.text-size-13, .text-size-13 * {
+	font-size: 1.3rem
+}
+
+.text-size-14, .text-size-14 * {
+	font-size: 1.4rem
+}
+
+.text-size-15, .text-size-15 * {
+	font-size: 1.5rem
+}
+
+.text-size-16, .text-size-16 * {
+	font-size: 1.6rem
+}
+
+.text-size-17, .text-size-17 * {
+	font-size: 1.7rem
+}
+
+.text-size-18, .text-size-18 * {
+	font-size: 1.8rem
+}
+
+.text-size-19, .text-size-19 * {
+	font-size: 1.9rem
+}
+
+.text-size-20, .text-size-20 * {
+	font-size: 2rem
+}
+
+.text-size-21, .text-size-21 * {
+	font-size: 2.1rem
+}
+
+.text-size-22, .text-size-22 * {
+	font-size: 2.2rem
+}
+
+.text-size-23, .text-size-23 * {
+	font-size: 2.3rem
+}
+
+.text-size-24, .text-size-24 * {
+	font-size: 2.4rem
+}
+
+.text-size-25, .text-size-25 * {
+	font-size: 2.5rem
+}
+
+.text-size-26, .text-size-26 * {
+	font-size: 2.6rem
+}
+
+.text-size-27, .text-size-27 * {
+	font-size: 2.7rem
+}
+
+.text-size-28, .text-size-28 * {
+	font-size: 2.8rem
+}
+
+.text-size-29, .text-size-29 * {
+	font-size: 2.9rem
+}
+
+.text-size-30, .text-size-30 * {
+	font-size: 3rem
+}
+
+.text-size-40, .text-size-40 * {
+	font-size: 4rem
+}
+
+.text-size-50, .text-size-50 * {
+	font-size: 5rem
+}
+
+.text-size-60, .text-size-60 * {
+	font-size: 6rem
+}
+
+.text-size-70, .text-size-70 * {
+	font-size: 7rem
+}
+
+.text-size-80, .text-size-80 * {
+	font-size: 8rem
+}
+
+.text-size-90, .text-size-90 * {
+	font-size: 9rem
+}
+
+.text-size-100, .text-size-100 * {
+	font-size: 10rem
+}
+
+/* Font weight */
+
+.text-bold, .text-blod * {
+	font-weight: bold
+}
+
+/* Background color */
+
+.ground-gray, .ground-gray * {
+	background-color: #a3a3a3
+}
+
+.ground-light-gray, .ground-light-gray * {
+	background-color: #e5e5e5
+}
+
+.ground-smoke, .ground-smoke * {
+	background-color: #cccccc
+}
+
+.ground-orange, .ground-orange * {
+	background-color: #db6935
+}
+
+.ground-blue, .ground-blue * {
+	background-color: steelblue
+}
+
+.ground-green, .ground-green * {
+	background-color: #409c55
+}
+
+.ground-red, .ground-red * {
+	background-color: #de4747
+}
+
+.ground-white, .ground-white * {
+	background-color: whitesmoke
+}
+
+.ground-teal, .ground-teal * {
+	background-color: teal
+}
+
+.ground-purple, .ground-purple * {
+	background-color: #8047a4
+}
+
+.ground-yellow, .ground-yellow * {
+	background-color: #e4b527
+}
+
+.ground-pink, .ground-pink * {
+	background-color: #d27da1
+}
+
+.ground-black, .ground-black * {
+	background-color: #373737
+}
+
+/* Align center */
+
+.ground-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.text-center {
+	text-align: center;
+}
+
+/* hide / show - remove*/
+
+.hide {
+	opacity: 0
+}
+
+.show {
+	opacity: 1
+}
+
+/* display */
+
+.flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.block {
+	display: block
+}
+
+.inline {
+	display: inline
+}
+
+.inline-block {
+	display: inline-block
+}
+
+.none {
+	display: none
+}
+
+.text-break {
+	white-space: pre-line;
+	word-break: break-word;
+}
+
+.hand {
+	cursor: pointer
+}

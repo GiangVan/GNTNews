@@ -30,6 +30,12 @@ class HomeController extends Controller
 		}
 	}
 
+	public function showDetailPrivatePoster($id)
+	{
+		$poster = Poster::find($id);
+		return view('poster/view', compact('poster'));
+	}
+
 
 
 	// public function speedtest(){

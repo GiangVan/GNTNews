@@ -16,7 +16,6 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/admin', 'AdminController@showAll');
 
-Route::get('/poster/comment/{id}', 'CommentController@getAllComment');////////////////////
 Route::get('/poster/approve/{id}', 'PosterManagementController@approve');
 Route::get('/poster/edit/{id}', 'PosterManagementController@showEditingPage');
 Route::post('/poster/edit', 'PosterManagementController@edit');
@@ -26,6 +25,7 @@ Route::post('/poster/add', 'PosterManagementController@add');
 Route::get('/myposts', 'PosterManagementController@showAll');
 
 Route::get('/poster/view/{id}', 'HomeController@showDetailPoster');
+Route::get('/poster/view/private/{id}', 'HomeController@showDetailPrivatePoster');
 
 Route::get('/category/edit/{id}', 'CategoryManagementController@showEditingPage');
 Route::get('/category/delete/{id}', 'CategoryManagementController@delete');
