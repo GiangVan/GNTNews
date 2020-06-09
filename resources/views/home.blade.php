@@ -70,12 +70,12 @@
                 padding: 15px;
             }
         </style>
-		
+
 		<style>
 			.post-content{
 				width: 300px;
 				height: 200px;
-				overflow: hidden;
+				overflow: auto;
 				position: relative;
 			}
 		</style>
@@ -119,7 +119,6 @@
                                 <td>{{ $poster->title }}</td>
                                 <td>
                                     <div class='post-content' name="{{ $poster->id }}">{!! $poster->content !!}</div>
-                                    <style>#cke_{{ $count }}_top, #cke_{{ $count }}_bottom{display:none}</style>
                                 </td>
                                 <td>{{ $poster->name }}</td>
                                 <td>{{ $poster->categorytitle }}</td>

@@ -41,18 +41,21 @@ class PosterManagementController extends Controller
 
 	public function showAll()
 	{
-		$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->where('users.id', '=', Auth::id())->get(['categories.title as categorytitle', 'posters.id as poster_id', 'categories.id as category_id', 'users.*', 'posters.*']);
+		$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->where('users.id', '=', Auth::id())->where('has_deleted', '=', false)->get(['categories.title as categorytitle', 'posters.id as poster_id', 'categories.id as category_id', 'users.*', 'posters.*']);
 		return view('myposts', compact('posters'));
 	}
 
     public function delete($id){
 		if(Auth::user()->role === 'admin'){
-			Poster::find($id)->delete();
+			$poster = Poster::find($id);
+			$poster->has_deleted = true;
+			$poster->save();
 			return view('redirect', ['url' => '/myposts']);
 		} else {
 			$poster = Poster::find($id);
 			if($poster && $poster->id_creator === Auth::id()){
-				$poster->delete();
+				$poster->has_deleted = true;
+				$poster->save();
 				return view('redirect', ['url' => '/myposts']);
 			}
 		}

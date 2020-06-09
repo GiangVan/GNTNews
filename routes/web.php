@@ -16,6 +16,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/admin', 'AdminController@showAll');
 
+Route::get('/poster/comment/{id}', 'CommentController@getAllComment');////////////////////
 Route::get('/poster/approve/{id}', 'PosterManagementController@approve');
 Route::get('/poster/edit/{id}', 'PosterManagementController@showEditingPage');
 Route::post('/poster/edit', 'PosterManagementController@edit');
@@ -31,6 +32,10 @@ Route::get('/category/delete/{id}', 'CategoryManagementController@delete');
 Route::post('/category/edit', 'CategoryManagementController@edit');
 Route::get('/category/add', 'CategoryManagementController@showAddingPage');
 Route::post('/category/add', 'CategoryManagementController@add');
+
+Route::post('comment/all/{id}', "CommentController@getAllComment");
+Route::post('comment/push', "CommentController@push");
+Route::post('comment/like', "CommentController@like");
 
 
 Route::get('image-upload', 'ImageUploadController@imageUpload')->name('image.upload');

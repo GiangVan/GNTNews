@@ -15,7 +15,7 @@ class HomeController extends Controller
 {
 	public function index()
 	{
-		$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->whereNotNull('posters.id_approver')->get(['categories.title as categorytitle', 'users.*', 'posters.*']);
+		$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->whereNotNull('posters.id_approver')->where('has_deleted', '=', false)->get(['categories.title as categorytitle', 'users.*', 'posters.*']);
 		$user = Auth::user();
 		return view('home', compact('posters', 'user'));
 	}
@@ -23,7 +23,7 @@ class HomeController extends Controller
 	public function showDetailPoster($id)
 	{
 		$poster = Poster::find($id);
-		if ($poster->id_approver) {
+		if ($poster->id_approver && !$poster->has_deleted) {
 			$poster->viewnumber = $poster->viewnumber + 1;
 			$poster->save();
 			return view('poster/view', compact('poster'));

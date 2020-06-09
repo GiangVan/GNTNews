@@ -25,7 +25,7 @@ class AdminController extends Controller
 		}
 
 		$category = DB::table('categories')->join('users', 'users.id', '=', 'categories.id_creator')->get(['categories.*', 'categories.id as category_id', 'users.*']);
-		$posters = Poster::all();
+		$posters = Poster::where('has_deleted', '=', false)->get();
 		return view('admin', compact('posters', 'category'));
 	}
 
