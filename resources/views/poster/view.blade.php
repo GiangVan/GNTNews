@@ -9,13 +9,12 @@
 <style>
 	.post{
 		position: relative;
-		overflow: auto;
 	}
 </style>
 
-<div class="container post">
+<div class="container post my-5 overflow-hidden">
     <div class="row flex-nowrap justify-content-center">
-        <div class="col-md-9 mr-4">
+        <div class="col mr-5 overflow-hidden">
             <h1>{{ $poster->title }}</h1>
             <div name="content">{!! $poster->content !!}</div>
         </div>
@@ -24,7 +23,7 @@
 			<ul>
 				@foreach ($topPosters as $topPoster)
 					<li class='p-2'>
-						<a href="/poster/view/{{ $topPoster->id }}">
+						<a class='text-dark text-bold' href="/poster/view/{{ $topPoster->id }}">
 						{{ $topPoster->title }}
 						</a>
 					</li>
