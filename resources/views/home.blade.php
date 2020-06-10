@@ -41,14 +41,6 @@
                 top: 18px;
             }
 
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -72,11 +64,24 @@
         </style>
 
 		<style>
+			.content{
+				margin-top: 125px !important;
+			}
+		
 			.post-content{
-				width: 300px;
 				height: 200px;
-				overflow: auto;
-				position: relative;
+				transform: scale(0.5);
+    			overflow: hidden;
+			}
+
+			.card{
+				width: 400px;
+				height: 300px;
+				transition: all .5s ease;
+			}
+
+			.card:hover{
+				transform: scale(1.03);
 			}
 		</style>
 
@@ -102,33 +107,20 @@
                 </div>
             @endif
 
-            <div class="content">
-                @if (count($posters))    
-                    <table style="text-align:left">
-                        <tr>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Auth</th>
-                            <th>Category</th>
-                            <th>View</th>
-                        </tr>
-                        <?php $count = 0; ?>
+            <div class="overflow-auto w-100 h-100 content justify-content-start align-items-start d-flex flex-wrap">
+                @if (count($posters))  
                         @foreach ($posters as $poster)
-                            <?php $count++; ?>
-                            <tr>
-                                <td>{{ $poster->title }}</td>
-                                <td>
-                                    <div class='post-content' name="{{ $poster->id }}">{!! $poster->content !!}</div>
-                                </td>
-                                <td>{{ $poster->name }}</td>
-                                <td>{{ $poster->categorytitle }}</td>
-                                <td>{{ $poster->viewnumber }}</td>
-                                <td class="btn-list">
-                                    <a href="/poster/view/{{ $poster->id }}" class="btn btn-warning">View</a>
-                                </td>
-                            </tr>
+						<a class='' href="/poster/view/{{ $poster->id }}">
+							<div class="card m-4 shadow">
+								<h5 class="card-header text-dark font-weight-bold">
+									{{ $poster->title }}
+								</h5>
+								<div class="card-body">
+									<div class='post-content' name="{{ $poster->id }}">{!! $poster->content !!}</div>
+								</div>
+							</div>
+						</a>
                         @endforeach
-                    </table>
                 @else
                     <p>empty!</p>
                 @endif
