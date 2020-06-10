@@ -17,15 +17,11 @@ class PosterManagementController extends Controller
     }
     
     public function showEditingPage($id){
-        $poster = $this->checkPosterExist($id);
-        if($poster !== false){
-            $category = Category::all();
-            return view('poster/edit', compact('poster', 'category'));
-        }
-        else
-        {
-            return view('redirect', ['url' => '/admin']);
-        }
+		$poster = Poster::find($id);
+		if($poster && Auth::user()->role === 'admin' || ($poster->id_approver === null && $poster->id_creator === Auth::id())){
+			$category = Category::all();
+			return view('poster/edit', compact('poster', 'category'));
+		}
 	}
 
 	public function approve($id){
@@ -50,13 +46,23 @@ class PosterManagementController extends Controller
 			$poster = Poster::find($id);
 			$poster->has_deleted = true;
 			$poster->save();
-			return view('redirect', ['url' => '/myposts']);
+			
+			if(Auth::user()->role === 'admin'){
+				return view('redirect', ['url' => '/admin']);
+			} else {
+				return view('redirect', ['url' => '/myposts']);
+			}
 		} else {
 			$poster = Poster::find($id);
 			if($poster && $poster->id_creator === Auth::id()){
 				$poster->has_deleted = true;
 				$poster->save();
-				return view('redirect', ['url' => '/myposts']);
+
+				if(Auth::user()->role === 'admin'){
+					return view('redirect', ['url' => '/admin']);
+				} else {
+					return view('redirect', ['url' => '/myposts']);
+				}
 			}
 		}
     }
@@ -78,20 +84,27 @@ class PosterManagementController extends Controller
 
         $poster->save();
 
-        return view('redirect', ['url' => '/myposts']);
+        if(Auth::user()->role === 'admin'){
+			return view('redirect', ['url' => '/admin']);
+		} else {
+			return view('redirect', ['url' => '/myposts']);
+		}
     }
 
     public function edit(Request $request){
-        if($this->checkPosterExist($request->id)){
-            $poster = Poster::find($request->id);
-            if(Auth::user()->role === 'admin' || $poster->id_approver === null){
-				$poster->title = $request->title;
-				$poster->content = $request->content;
-				$poster->id_category = $request->category;
-				$poster->save();
-			}
-        }
-        return view('redirect', ['url' => '/myposts']);
+		$poster = Poster::find($request->id);
+		if($poster && Auth::user()->role === 'admin' || ($poster->id_approver === null && $poster->id_creator === Auth::id())){
+			$poster->title = $request->title;
+			$poster->content = $request->content;
+			$poster->id_category = $request->category;
+			$poster->save();
+		}
+
+        if(Auth::user()->role === 'admin'){
+			return view('redirect', ['url' => '/admin']);
+		} else {
+			return view('redirect', ['url' => '/myposts']);
+		}
     }
 
     public function apiget(Request $request){
@@ -99,21 +112,21 @@ class PosterManagementController extends Controller
         return "hello {$id}";
     }
 
-    private function checkPosterExist($id){
-        if($id !== '')
-        {
-            $posters = $posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->where('users.id', '=', Auth::id())->where('posters.id', '=', $id)->get(['categories.title as categorytitle', 'posters.id as poster_id', 'categories.id as category_id', 'users.*', 'posters.*']);
-            if(count($posters))
-            {
-                $poster = $posters->where('id', $id);
-                if(count($poster)){
-                    foreach ($poster as $value) {
-                        $poster = $value;
-                    }
-                    return $poster;
-                }
-            }
-        }
-        return false;
-    }
+    // private function checkPosterExist($id){
+    //     if($id !== '')
+    //     {
+    //         $posters = $posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->where('users.id', '=', Auth::id())->where('posters.id', '=', $id)->get(['categories.title as categorytitle', 'posters.id as poster_id', 'categories.id as category_id', 'users.*', 'posters.*']);
+    //         if(count($posters))
+    //         {
+    //             $poster = $posters->where('id', $id);
+    //             if(count($poster)){
+    //                 foreach ($poster as $value) {
+    //                     $poster = $value;
+    //                 }
+    //                 return $poster;
+    //             }
+    //         }
+    //     }
+    //     return false;
+    // }
 }

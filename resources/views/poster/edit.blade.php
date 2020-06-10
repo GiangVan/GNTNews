@@ -14,14 +14,14 @@
                         <div class="form-group">
                             <label>Tile</label>
                             <input class="form-control" name="title" value="{{ $poster->title }}">
-                            <input style="display:none" name="id" value="{{ $poster->poster_id }}">
+                            <input style="display:none" name="id" value="{{ $poster->id }}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group my-5">
                             <label>Content</label>
                             <textarea name="content">{{ $poster->content }}</textarea>
                             <script>CKEDITOR.replace('content',{filebrowserUploadUrl: '/api/image-upload'});CKEDITOR.config.extraPlugins='image2'</script>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group my-5">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="inputGroupSelect">Category</label>
