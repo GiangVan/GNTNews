@@ -22,13 +22,19 @@
 			<h1 class=" p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Top news</h1>
 			<ul>
 				@foreach ($topPosters as $topPoster)
-					<li class='p-2'>
+					<li class='p-2' style='list-style-type: none;'>
 						<a class='text-dark text-bold' href="/poster/view/{{ $topPoster->id }}">
 						{{ $topPoster->title }}
 						</a>
 					</li>
 				@endforeach
 			</ul>
+
+			<h1 class="p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Author</h1>
+			<p class='p-3 ml-2'>{{ $poster->author_name }}</p>
+
+			<h1 class="p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>View</h1>
+			<p class='p-3 ml-2 text-bold'>{{ $poster->viewnumber }}</p>
         </div>
     </div>
 </div>
