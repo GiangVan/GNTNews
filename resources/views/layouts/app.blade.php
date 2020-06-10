@@ -7,38 +7,36 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>News</title>
+    <title>Tin tức</title>
 
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- <link rel="dns-prefetch" href="//fonts.gstatic.com"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
 
     <!-- my css -->
 	<link href="/my_CSS.css" rel="stylesheet">
     <!-- bootstrap -->
 	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- <link href="/bootstrap/css/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
 	
 	<!--  -->
 	
-	   <script src="/jquery/jquery-3.3.1.slim.min.js"></script>
+	<script src="/jquery/jquery-3.3.1.slim.min.js"></script>
+	<!-- <script src="/jquery/jquery.dataTables.min.js"></script>
+	<script src="/jquery/dataTables.bootstrap4.min.js"></script> -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
 	
 	<!--  -->
     <style>
-        .content{
-            margin: 15px;
-        }
-        table *{
-            padding: 15px;
-        }
-        table td:not(.btn-list){
-            white-space: pre-wrap;
-            word-break: break-all;
-        }
-        .card{
-            margin-top: 20px;
-        }
+
+		body{
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+		}
+
+		td, th{
+			padding: 10px;
+		}
     </style>
     <!-- ckeditor -->
     <script src="/ckeditor/ckeditor.js"></script>
@@ -48,7 +46,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Home
+                    Trang chủ
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

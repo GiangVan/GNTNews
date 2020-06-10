@@ -3,9 +3,11 @@
         {!!
             //Comment parent and child
             $add_class = "";
+            $timeStyle = "color: #9e9e9e;top: -63px; position: absolute;right: -11px;";
             $add_attribute = "";
             $add_ButtonReply = "<p class='hand btn-reply' onclick='btnReplay_Click({$comment->id})'>TRẢ LỜI</p>";
             if(isset($comment->comment_id)){
+				$timeStyle = "color: #9e9e9e;top: -103px; position: absolute;right: -11px;";
                 $add_class = "child";
                 $add_attribute = "data-parent_id={$comment->comment_id}";
                 $add_ButtonReply = "";
@@ -19,6 +21,7 @@
                 <pre class='content'>{{ $comment->content }}</pre>
 				<div class='tool-bar'>
 					{!! $add_ButtonReply !!}
+					<div style='{{ $timeStyle }}' class="time">{{$comment->time}}</div>
 				</div>         
             </div>   
         </div>

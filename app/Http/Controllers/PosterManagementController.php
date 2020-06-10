@@ -47,22 +47,14 @@ class PosterManagementController extends Controller
 			$poster->has_deleted = true;
 			$poster->save();
 			
-			if(Auth::user()->role === 'admin'){
-				return view('redirect', ['url' => '/admin']);
-			} else {
-				return view('redirect', ['url' => '/myposts']);
-			}
+			return view('redirect', ['url' => '/admin']);
 		} else {
 			$poster = Poster::find($id);
 			if($poster && $poster->id_creator === Auth::id()){
 				$poster->has_deleted = true;
 				$poster->save();
 
-				if(Auth::user()->role === 'admin'){
-					return view('redirect', ['url' => '/admin']);
-				} else {
-					return view('redirect', ['url' => '/myposts']);
-				}
+				return view('redirect', ['url' => '/admin']);
 			}
 		}
     }
@@ -84,11 +76,7 @@ class PosterManagementController extends Controller
 
         $poster->save();
 
-        if(Auth::user()->role === 'admin'){
-			return view('redirect', ['url' => '/admin']);
-		} else {
-			return view('redirect', ['url' => '/myposts']);
-		}
+		return view('redirect', ['url' => '/admin']);
     }
 
     public function edit(Request $request){
@@ -100,11 +88,7 @@ class PosterManagementController extends Controller
 			$poster->save();
 		}
 
-        if(Auth::user()->role === 'admin'){
-			return view('redirect', ['url' => '/admin']);
-		} else {
-			return view('redirect', ['url' => '/myposts']);
-		}
+		return view('redirect', ['url' => '/admin']);
     }
 
     public function apiget(Request $request){

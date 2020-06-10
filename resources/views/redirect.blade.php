@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta http-equiv="refresh" content="0;url={{ $url }}">
 </head>
-<body>
-    
-</body>
+<body></body>
 </html>

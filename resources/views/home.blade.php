@@ -69,19 +69,37 @@
 			}
 		
 			.post-content{
-				height: 200px;
+				    height: 723px;
 				transform: scale(0.5);
-    			overflow: hidden;
+				overflow: hidden;
+				width: 188%;
+				position: relative;
+				top: -59%;
+				left: -44%;
 			}
 
 			.card{
-				width: 400px;
-				height: 300px;
-				transition: all .5s ease;
+				width: 350px;
+				height: 478px;
+				transition: all .35s ease;
 			}
 
 			.card:hover{
-				transform: scale(1.03);
+				transform: scale(1.02);
+			}
+
+			.card-body {
+				position: relative;
+				overflow: hidden;
+			}
+
+			.card-body .shield{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+				z-index: 1000;
 			}
 		</style>
 
@@ -93,15 +111,12 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-						@if ($user->role === 'admin')
-						<a href="{{ url('/admin') }}">Admin</a>
-						@endif
-						<a href="{{ url('/myposts') }}">My posts</a>
+						<a href="{{ url('/admin') }}">Quản lý bài viết</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">Đăng nhập</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Đăng ký</a>
                         @endif
                     @endauth
                 </div>
@@ -110,16 +125,19 @@
             <div class="overflow-auto w-100 h-100 content justify-content-start align-items-start d-flex flex-wrap">
                 @if (count($posters))  
                         @foreach ($posters as $poster)
-						<a class='' href="/poster/view/{{ $poster->id }}">
-							<div class="card m-4 shadow">
-								<h5 class="card-header text-dark font-weight-bold">
-									{{ $poster->title }}
-								</h5>
-								<div class="card-body">
-									<div class='post-content' name="{{ $poster->id }}">{!! $poster->content !!}</div>
+						<div class="m-5">
+							<a style='text-decoration: none !important;' class='d-block' href="/poster/view/{{ $poster->id }}">
+								<div class="card shadow">
+									<h4 class="card-header p-4 text-dark font-weight-bold">
+										{{ $poster->title }}
+									</h4>
+									<div class="card-body">
+									<div class="shield"></div>
+										<div class='post-content' name="{{ $poster->id }}">{!! $poster->content !!}</div>
+									</div>
 								</div>
-							</div>
-						</a>
+							</a>
+						</div>
                         @endforeach
                 @else
                     <p>empty!</p>

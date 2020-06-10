@@ -11,6 +11,7 @@ use App\Account;
 use App\Poster;
 use App\Comment;
 use Carbon\Carbon;
+use App\Helpers\TimeConvert;
 
 class CommentController
 {
@@ -23,6 +24,7 @@ class CommentController
 			{
 				$comment->owner_name = User::find($comment->id_user)->name;
 			}
+			$this->formatDateTime($comments);
 
 			return view("comment", [
 				"chemicalID" => $post_id, 
@@ -48,6 +50,12 @@ class CommentController
 		return $newComments;
 	}
 
+	protected function formatDateTime(&$comments){
+		foreach ($comments as $comment){
+			$comment->time = TimeConvert::getDiff($comment->created_at);
+		}
+	}
+
     public function push(Request $request){
         if(Auth::user()){
             if($request->content){
@@ -61,21 +69,5 @@ class CommentController
             }
         }
         return null;
-    }
-
-    public function like(Request $request){
-        // if(!is_null(Guard::$accessUser["ID"])){
-        //     if(is_null(LikeComment::where("ID_User", Guard::$accessUser["ID"])->where("ID_Comment", $request["commentID"])->first())){
-        //         $like = new LikeComment();
-        //         $like->id_comment = $request["commentID"];
-        //         $like->id_user = Guard::$accessUser["ID"];
-        //         $like->save();
-        //     } else{
-        //         $likeInstance = LikeComment::where("ID_User", Guard::$accessUser["ID"])->where("ID_Comment", $request["commentID"]);
-        //         return $likeInstance->delete();
-        //     }
-        //     return 1;
-        // }
-        // return 0;
     }
 }

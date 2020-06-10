@@ -18,11 +18,13 @@
             <h1>{{ $poster->title }}</h1>
             <div name="content">{!! $poster->content !!}</div>
         </div>
+
+		@if (isset($topPosters))
         <div class="col-md-3">
-			<h1 class=" p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Top news</h1>
+			<h1 class=" p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Bài nổi bật</h1>
 			<ul>
 				@foreach ($topPosters as $topPoster)
-					<li class='p-2' style='list-style-type: none;'>
+					<li class='p-2 my-1' style='list-style-type: none;'>
 						<a class='text-dark text-bold' href="/poster/view/{{ $topPoster->id }}">
 						{{ $topPoster->title }}
 						</a>
@@ -30,17 +32,33 @@
 				@endforeach
 			</ul>
 
-			<h1 class="p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Author</h1>
+			<h1 class="p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Tác giả</h1>
 			<p class='p-3 ml-2'>{{ $poster->author_name }}</p>
 
-			<h1 class="p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>View</h1>
+			<h1 class="p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Lượt xem</h1>
 			<p class='p-3 ml-2 text-bold'>{{ $poster->viewnumber }}</p>
         </div>
+		@endif
     </div>
 </div>
 
+@if (isset($relatedPosters))
+<div class="container my-5">
+	<h1 class=" p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Bài liên quan</h1>
+	<ul>
+		@foreach ($relatedPosters as $relatedPoster)
+			<li class='p-2 my-2' style='list-style-type: none;'>
+				<a class='text-dark text-bold' href="/poster/view/{{ $relatedPoster->id }}">
+				{{ $relatedPoster->title }}
+				</a>
+			</li>
+		@endforeach
+	</ul>
+</div>
+@endif
+
  <div class="container my-5">
-        <h1 class=" p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Comments</h1>
+        <h1 class=" p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Bình luận</h1>
         <div class="comments"></div>
         <div id="loader" class="ground-center" style="background-image:url('/images/loader.gif')"></div>
 

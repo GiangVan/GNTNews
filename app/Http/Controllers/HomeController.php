@@ -15,7 +15,7 @@ class HomeController extends Controller
 {
 	public function index()
 	{
-		$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->whereNotNull('posters.id_approver')->where('has_deleted', '=', false)->get(['categories.title as categorytitle', 'users.*', 'posters.*']);
+		$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->whereNotNull('posters.id_approver')->where('has_deleted', '=', false)->orderBy('posters.created_at', 'desc')->get(['categories.title as categorytitle', 'users.*', 'posters.*']);
 		$user = Auth::user();
 		return view('home', compact('posters', 'user'));
 	}
@@ -23,14 +23,15 @@ class HomeController extends Controller
 	public function showDetailPoster($id)
 	{
 		$poster = Poster::find($id);
-		$topPosters = Poster::whereNotNull('posters.id_approver')->where('has_deleted', '=', false)->orderBy('viewnumber', 'desc')->get();
+		$topPosters = Poster::whereNotNull('posters.id_approver')->where('has_deleted', '=', false)->orderBy('viewnumber', 'desc')->limit(10)->get();
+		$relatedPosters = Poster::where('id', '!=', $poster->id)->where('id_category', '=', $poster->id_category)->where('has_deleted', '=', false)->orderBy('created_at', 'desc')->limit(10)->get();
 		
 		if ($poster->id_approver && !$poster->has_deleted) {
 			$poster->viewnumber = $poster->viewnumber + 1;
 			$poster->save();
 			
 			$poster->author_name = User::find($poster->id_creator)->name;
-			return view('poster/view', compact('poster', 'topPosters'));
+			return view('poster/view', compact('poster', 'topPosters', 'relatedPosters'));
 		}
 	}
 
