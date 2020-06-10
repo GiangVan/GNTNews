@@ -5,17 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">add new a category</div>
+                <div class="card-header">Thêm thể loại</div>
 
-                <div class="content">
+                <div class="card-body">
                     <form action="/category/add" method="post">
                         @csrf
                         <div class="form-group">
-                            <label>Tile</label>
-                            <input class="form-control" name="title">
+                            <label>Tên thể loại</label>
+                            <input class="form-control" name="title" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="/admin" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary px-4 mr-1">Thêm ngay</button>
+                        <a href="/admin" class="btn btn-secondary">Hủy</a>
                     </form>
                 </div>
             </div>
