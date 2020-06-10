@@ -14,16 +14,28 @@
 </style>
 
 <div class="container post">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
+    <div class="row flex-nowrap justify-content-center">
+        <div class="col-md-9 mr-4">
             <h1>{{ $poster->title }}</h1>
             <div name="content">{!! $poster->content !!}</div>
+        </div>
+        <div class="col-md-3">
+			<h1 class=" p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Top news</h1>
+			<ul>
+				@foreach ($topPosters as $topPoster)
+					<li class='p-2'>
+						<a href="/poster/view/{{ $topPoster->id }}">
+						{{ $topPoster->title }}
+						</a>
+					</li>
+				@endforeach
+			</ul>
         </div>
     </div>
 </div>
 
  <div class="container my-5">
-        <h1 class=" p-3 title text-white curved-2 text-size-14 ground-smoke">Comments</h1>
+        <h1 class=" p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Comments</h1>
         <div class="comments"></div>
         <div id="loader" class="ground-center" style="background-image:url('/images/loader.gif')"></div>
 

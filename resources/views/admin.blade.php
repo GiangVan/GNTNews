@@ -16,6 +16,8 @@
             <div class="card">
                 <div class="card-header">Posts</div>
                 <div class="content">
+				<a href="/poster/add" class="w-100 mb-5 btn btn-primary">Add</a>
+				
                     @if (count($posters))       
                         <table style="text-align:left">
                             <tr>
@@ -52,7 +54,7 @@
                     @else
                         <p>empty!</p>
                     @endif
-                    <a href="/poster/add" style="margin:10px" class="btn btn-primary">Add</a>
+                    
                 </div>
             </div>
 

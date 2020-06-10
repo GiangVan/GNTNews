@@ -23,10 +23,12 @@ class HomeController extends Controller
 	public function showDetailPoster($id)
 	{
 		$poster = Poster::find($id);
+		$topPosters = Poster::whereNotNull('posters.id_approver')->where('has_deleted', '=', false)->orderBy('viewnumber', 'desc')->get();
+		// dd($poster->content);
 		if ($poster->id_approver && !$poster->has_deleted) {
 			$poster->viewnumber = $poster->viewnumber + 1;
 			$poster->save();
-			return view('poster/view', compact('poster'));
+			return view('poster/view', compact('poster', 'topPosters'));
 		}
 	}
 
