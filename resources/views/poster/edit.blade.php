@@ -2,24 +2,21 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <h5 class="card-header">Sửa bài viết</h5>
+    <h2 class="text-center">Sửa bài viết</h2>
 
                 <div class="card-body">
                     <form action="/poster/edit" method="post">
                         @csrf
                         
-                        <div class="form-group">
+                        <div class="form-group my-5">
                             <label class='font-weight-bold'>Tiêu đề bài viết:</label>
-                            <input class="form-control" name="title" value="{{ $poster->title }}">
+                            <input class="form-control" name="title" value="{{ $poster->title }}" required>
                             <input style="display:none" name="id" value="{{ $poster->id }}">
                         </div>
                         <div class="form-group my-5">
                             <label class='font-weight-bold'>Nội dung bài viết:</label>
                             <textarea name="content">{{ $poster->content }}</textarea>
-                            <script>CKEDITOR.replace('content',{filebrowserUploadUrl: '/api/image-upload'});CKEDITOR.config.extraPlugins='image2'</script>
+                            <script>CKEDITOR.replace('content',{filebrowserUploadUrl: '/api/image-upload',height: 700});CKEDITOR.config.extraPlugins='image2'</script>
                         </div>
                         <div class="form-group my-5">
                             <div class="input-group mb-3">
@@ -41,8 +38,5 @@
                         <a href="/admin" class="btn btn-secondary">Hủy</a>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
 </div>
 @endsection

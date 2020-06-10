@@ -29,6 +29,7 @@ class AdminController extends Controller
 			$this->fetchApproverNames($posters);
 			$this->fetchCategoryTitles($posters);
 			$this->formatDataTime($posters);
+			$this->fetchAuthorNames($posters);
 		}
 
 		$category = DB::table('categories')->join('users', 'users.id', '=', 'categories.id_creator')->get(['categories.*', 'categories.id as category_id', 'users.*']);
@@ -53,6 +54,14 @@ class AdminController extends Controller
 		foreach($posters as &$poster){
 			if($poster->id_approver){
 				$poster->approver_name = User::find($poster->id_approver)->name;
+			}
+		}
+	}
+
+	protected function fetchAuthorNames(&$posters){
+		foreach($posters as &$poster){
+			if($poster->id_approver){
+				$poster->author_name = User::find($poster->id_creator)->name;
 			}
 		}
 	}

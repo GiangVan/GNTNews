@@ -23,6 +23,7 @@
 	<!--  -->
 	
 	<script src="/jquery/jquery-3.3.1.slim.min.js"></script>
+	<script src="/jquery/sweetalert.min.js"></script>
 	<!-- <script src="/jquery/jquery.dataTables.min.js"></script>
 	<script src="/jquery/dataTables.bootstrap4.min.js"></script> -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>

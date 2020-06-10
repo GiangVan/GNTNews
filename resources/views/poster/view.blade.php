@@ -57,44 +57,46 @@
 </div>
 @endif
 
- <div class="container my-5">
-        <h1 class=" p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Bình luận</h1>
-        <div class="comments"></div>
-        <div id="loader" class="ground-center" style="background-image:url('/images/loader.gif')"></div>
+@if (isset($relatedPosters) && isset($topPosters))
 
-        <div id='reply' class='reply floating teal' style="margin-top:50px">
-            @if(!isset($user))
-                <p class="text-gray justify-center">
-                    Bạn cần
-                    <a href="{{ url('/login') }}" class="text-teal">đăng nhập</a>
-                    để bình luận
-                </p>
-            @else
-                <a class='avatar curved-circle' style='background-image:url("/images/avatar.jpg")'></a>
-                <div class='body curved-circle'>
-                    <input id='textReply' class="content" onkeypress="keyPress_pushComment(event)">
-                    <i class="far fa-smile"></i>
-                </div>
-                <i class="far fa-paper-plane btn-submit" onclick="pushComment()"></i>
-            @endif
-        </div>
-        <div id='replySeccond' class='reply floating teal child none' send_to_comment_id='' style="margin-bottom:50px">
-            @if(!isset($user))
-                <p class="text-gray justify-center">
-                    Bạn cần
-                    <a href="{{ url('/login') }}" class="text-teal">đăng nhập</a>
-                    để bình luận
-                </p>
-            @else
-                <a class='avatar curved-circle' style='background-image:url("/images/avatar.jpg")'></a>
-                <div class='body curved-circle'>
-                    <input id='textReplySeccond' class="content" onkeypress="keyPress_pushCommentFromComment(event)">
-                    <i class="far fa-smile"></i>
-                </div>
-                <i class="far fa-paper-plane btn-submit" onclick="pushCommentFromComment()"></i>
-            @endif
-        </div>
-    </div>
+ <div class="container my-5">
+	<h1 class=" p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Bình luận</h1>
+	<div class="comments"></div>
+	<div id="loader" class="ground-center" style="background-image:url('/images/loader.gif')"></div>
+
+	<div id='reply' class='reply floating teal' style="margin-top:50px">
+		@if(!isset($user))
+			<p class="text-gray justify-center">
+				Bạn cần
+				<a href="{{ url('/login') }}" class="text-teal">đăng nhập</a>
+				để bình luận
+			</p>
+		@else
+			<a class='avatar curved-circle' style='background-image:url("/images/avatar.jpg")'></a>
+			<div class='body curved-circle'>
+				<input id='textReply' class="content" onkeypress="keyPress_pushComment(event)">
+				<i class="far fa-smile"></i>
+			</div>
+			<i class="far fa-paper-plane btn-submit" onclick="pushComment()"></i>
+		@endif
+	</div>
+	<div id='replySeccond' class='reply floating teal child none' send_to_comment_id='' style="margin-bottom:50px">
+		@if(!isset($user))
+			<p class="text-gray justify-center">
+				Bạn cần
+				<a href="{{ url('/login') }}" class="text-teal">đăng nhập</a>
+				để bình luận
+			</p>
+		@else
+			<a class='avatar curved-circle' style='background-image:url("/images/avatar.jpg")'></a>
+			<div class='body curved-circle'>
+				<input id='textReplySeccond' class="content" onkeypress="keyPress_pushCommentFromComment(event)">
+				<i class="far fa-smile"></i>
+			</div>
+			<i class="far fa-paper-plane btn-submit" onclick="pushCommentFromComment()"></i>
+		@endif
+	</div>
+</div>
 
     <script>
         var chemID = "{{ $poster->id }}";
@@ -159,4 +161,8 @@
             return document.getElementById(id);
         }
 		</script>
+
+@endif
+
+
 @endsection

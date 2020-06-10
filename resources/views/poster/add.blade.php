@@ -2,24 +2,21 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="card">
-                <h5 class="card-header">Thêm bài mới</h5>
+    <h2 class="text-center">Thêm bài mới</h2>
 
                 <div class="card-body">
                     <form action="/poster/add" method="post">
                         @csrf
-                        <div class="form-group">
+                        <div class="form-group my-5">
                             <label class='font-weight-bold'>Tiêu đề bài viết:</label>
-                            <input class="form-control" name="title">
+                            <input class="form-control" name="title" required autofocus>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group my-5">
                             <label class='font-weight-bold'>Nội dung bài viết:</label>
-                            <textarea name="content"></textarea>
-                            <script>CKEDITOR.replace('content',{filebrowserUploadUrl: '/api/image-upload'});CKEDITOR.config.extraPlugins='image2'</script>
+                            <textarea name="content" required></textarea>
+                            <script>CKEDITOR.replace('content',{filebrowserUploadUrl: '/api/image-upload',height: 700});CKEDITOR.config.extraPlugins='image2'</script>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group my-5">
                             <div class="input-group-prepend">
                                 <label class="font-weight-bold input-group-text" for="inputGroupSelect">Thể loại</label>
                             </div>
@@ -33,8 +30,5 @@
                         <a href="/admin" class="btn btn-secondary">Hủy</a>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
 </div>
 @endsection

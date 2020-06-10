@@ -49,6 +49,7 @@
                                 <th>Thể loại</th>
                                 <th>Ngày đăng</th>
                                 <th>Lượt xem</th>
+                                <th>Tác giả</th>
                                 <th>Người duyệt</th>
                                 <th>Tùy chọn</th>
                             </tr>
@@ -69,14 +70,15 @@
                                     <td>{{ $poster->categorytitle }}</td>
                                     <td>{{ $poster->time }}</td>
                                     <td>{{ $poster->viewnumber }}</td>
+                                    <td>{{ $poster->author_name }}</td>
 									@if ($poster->id_approver)
                                     <td>{{ $poster->approver_name }}</td>
 									@else
-                                        <td><a href="/poster/approve/{{ $poster->id }}" class="btn btn-success">approve</a></td>
+                                        <td><a href="/poster/approve/{{ $poster->id }}" class="btn btn-success">Duyệt</a></td>
 									@endif
                                     <td class="btn-list">
-                                        <a href="/poster/edit/{{ $poster->id }}" class="btn btn-primary">Edit</a>
-                                        <a href="/poster/delete/{{ $poster->id }}" class="btn btn-danger">Delete</a>
+                                        <a href="/poster/edit/{{ $poster->id }}" class="btn btn-primary">Sửa</a>
+                                        <div onclick='deletePost({{ $poster->id }})' class="btn btn-danger">Xóa</div>
                                     </td>
                                 </tr>
                             @endforeach
@@ -126,7 +128,7 @@
 											@if ($user->role === 'admin' || $poster->id_approver === null)
 												<a href="/poster/edit/{{ $poster->id }}" class="m-1 btn btn-primary">Sửa</a>
 											@endif
-											<a href="/poster/delete/{{ $poster->id }}" class="m-1 btn btn-danger">Xóa</a>
+											<div onclick='deletePost({{ $poster->id }})' class="m-1 btn btn-danger">Xóa</div>
 										</div>
                                     </td>
                                 </tr>
@@ -157,7 +159,7 @@
                                     <td>{{ $c->name }}</td>
                                     <td class="btn-list">
                                         <a href="/category/edit/{{ $c->category_id }}" class="btn btn-primary">Sửa</a>
-                                        <a href="/category/delete/{{ $c->category_id }}" class="btn btn-danger">Xóa</a>
+                                        <div onclick='deleteCategory({{ $c->category_id }})' class="btn btn-danger">Xóa</div>
                                     </td>
                                 </tr>
                             @endforeach
@@ -172,4 +174,41 @@
         </div>
     </div>
 </div>
+
+<script>
+	function deletePost(id){
+		swal({
+			title: "Bạn chắc chứ?",
+			text: "Cân nhắc kỹ trước khi quyết định!",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+			cancel: 'Đóng',
+			buttons: ['Đóng', 'Xóa']
+		})
+		.then((willDelete) => {
+			if (willDelete) {
+				window.location.href = `/poster/delete/${id}`;
+			}
+		});
+	}
+
+	function deleteCategory(id){
+		swal({
+			title: "Bạn chắc chứ?",
+			text: "Cân nhắc kỹ trước khi quyết định!",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+			buttons: ['Đóng', 'Xóa']
+		})
+		.then((willDelete) => {
+			if (willDelete) {
+				window.location.href = `/category/delete/${id}`;
+			}
+		});
+	}
+
+
+</script>
 @endsection
