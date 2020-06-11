@@ -32,7 +32,8 @@ class AdminController extends Controller
 			$this->fetchAuthorNames($posters);
 		}
 
-		$category = DB::table('categories')->join('users', 'users.id', '=', 'categories.id_creator')->get(['categories.*', 'categories.id as category_id', 'users.*']);
+		$category = DB::table('categories')->join('users', 'users.id', '=', 'categories.id_creator')->get(['categories.*', 'categories.id as category_id', 'categories.created_at as category_created_at', 'users.*']);
+		$this->formatCategoryDataTime($category);
 		$myPosters = Poster::where('has_deleted', '=', false)->where('id_creator', '=', Auth::id())->get();
 		$this->fetchCategoryTitles($myPosters);
 		$this->formatDataTime($myPosters);
@@ -69,6 +70,12 @@ class AdminController extends Controller
 	protected function formatDataTime(&$posters){
 		foreach($posters as &$poster){
 			$poster->time = TimeConvert::getDiff($poster->created_at);
+		}
+	}
+
+	protected function formatCategoryDataTime(&$categories){
+		foreach($categories as &$category){
+			$category->category_created_at = TimeConvert::getDiff($category->category_created_at);
 		}
 	}
 }

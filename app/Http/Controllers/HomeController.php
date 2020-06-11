@@ -16,15 +16,30 @@ class HomeController extends Controller
 	public function index($categoryId = null)
 	{
 		if($categoryId){
-			$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->whereNotNull('posters.id_approver')->where('posters.id_category', '=', $categoryId)->where('has_deleted', '=', false)->orderBy('posters.created_at', 'desc')->get(['categories.title as categorytitle', 'users.*', 'posters.*']);
+			$posters = Poster::whereNotNull('id_approver')->where('id_category', '=', $categoryId)->where('has_deleted', '=', false)->orderBy('created_at', 'desc')->get(['title', 'id', 'content']);
 			
 		} else {
-			$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->whereNotNull('posters.id_approver')->where('has_deleted', '=', false)->orderBy('posters.created_at', 'desc')->get(['categories.title as categorytitle', 'users.*', 'posters.*']);
+			$posters = Poster::whereNotNull('id_approver')->where('has_deleted', '=', false)->orderBy('created_at', 'desc')->get(['title', 'id', 'content']);
 
 		}
 		$user = Auth::user();
 		$categories = Category::all();
 		return view('home', compact('posters', 'user', 'categories', 'categoryId'));
+	}
+
+	public function search(Request $req)
+	{
+		$text = $req->text;
+		$categoryId = null;
+
+		if($text){
+			$posters = Poster::whereNotNull('id_approver')->where('has_deleted', '=', false)->where('content', 'like', "%{$text}%")->orderBy('created_at', 'desc')->get(['title', 'id', 'content']);
+			$user = Auth::user();
+			$categories = Category::all();
+			return view('home', compact('posters', 'user', 'categories', 'categoryId'));
+		} else {
+			return $this->index($categoryId);
+		}
 	}
 
 	public function showDetailPoster($id)

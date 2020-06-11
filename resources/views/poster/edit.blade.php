@@ -34,7 +34,7 @@
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary px-5 mr-2">Thêm bài ngay</button>
+                        <button type="submit" class="btn btn-primary px-5 mr-2">Gửi bài</button>
                         <a href="/admin" class="btn btn-secondary">Hủy</a>
                     </form>
                 </div>

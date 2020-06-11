@@ -37,9 +37,8 @@
         <div class="col-md-12">
 			@if ($user->role === 'admin')
             <div class="card my-5">
-                <div class="card-header">Tất cả bài viết</div>
+                <p class="card-header">Tất cả bài viết</p>
                 <div class="card-body">
-					<a href="/poster/add" class="w-100 mb-5 btn btn-warning">Viết bài mới</a>
 				
                     @if (count($posters))       
                         <table style="text-align:left">
@@ -90,7 +89,7 @@
 			@endif
 
 			<div class="card my-5">
-                <div class="card-header">Bài Viết của tôi</div>
+                <p class="card-header">Bài Viết của tôi</p>
                 <div class="card-body">
 					<a href="/poster/add" class="w-100 mb-5 btn btn-warning">Viết bài mới</a>
 				
@@ -138,21 +137,23 @@
 
 			@if ($user->role === 'admin' && $category)
             <div class="card my-5">
-                <div class="card-header">Quản lý thể loại</div>
+                <p class="card-header">Quản lý thể loại</p>
                 <div class="card-body">
 					<a href="/category/add" style="margin:10px" class="mb-5 w-100 btn btn-primary">Thêm thễ loại</a>
 
                     @if (count($category))       
-                        <table style="text-align:left">
+                        <table class='w-100' style="text-align:left">
                             <tr>
                                 <th>Tên thể loại</th>
                                 <th>Người thêm</th>
-                                <th></th>
+								<th>Ngày thêm</th>
+                                <th>Tùy chọn</th>
                             </tr>
                             @foreach ($category as $c)
                                 <tr>
                                     <td>{{ $c->title }}</td>
                                     <td>{{ $c->name }}</td>
+                                    <td>{{ $c->category_created_at }}</td>
                                     <td class="btn-list">
                                         <a href="/category/edit/{{ $c->category_id }}" class="btn btn-primary">Sửa</a>
                                         <div onclick='deleteCategory({{ $c->category_id }})' class="btn btn-danger">Xóa</div>

@@ -18,7 +18,7 @@
 			}
 
 			.card{
-				width: 350px;
+				width: 320px;
 				height: 478px;
 				transition: all .35s ease;
 			}
@@ -40,9 +40,16 @@
 				top: 0;
 				z-index: 1000;
 			}
+
+			.searcher{
+				width: 300px;
+				margin-left: auto;
+			}
 		</style>
 
-			<nav class='mx-4'>
+
+
+			<nav class='container'>
 				<div class="nav nav-tabs" id="nav-tab" role="tablist">	
 					<a class="text-dark nav-item nav-link @if ($categoryId == null) active @endif" href="/home">Tất cả</a>
 					
@@ -50,12 +57,18 @@
 					<a class="text-dark nav-item nav-link @if ($categoryId == $category->id) active @endif" href="/home/{{$category->id}}">{{$category->title}}</a>
 					@endforeach
 				</div>
+				<form action="/search" method="get" class="searcher input-group mt-3">
+					<input type="text" name="text" class="form-control" placeholder="Tìm bài..." aria-label="Tìm bài...">
+					<div class="input-group-prepend">
+						<input class="input-group-text" type='submit' onclick="basic-addon1" value='&#128270;'>
+					</div>
+				</form>
 			</nav>
 
-            <div class="overflow-auto w-100 h-100 content justify-content-start align-items-start d-flex flex-wrap">
+            <div class="container overflow-auto content d-flex flex-wrap justify-content-center">
                 @if (count($posters))  
                         @foreach ($posters as $poster)
-						<div class="m-5">
+						<div class="m-4">
 							<a style='text-decoration: none !important;' class='d-block' href="/poster/view/{{ $poster->id }}">
 								<div class="card shadow">
 									<h4 class="card-header p-4 text-dark font-weight-bold">

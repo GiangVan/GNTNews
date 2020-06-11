@@ -35,12 +35,6 @@ class PosterManagementController extends Controller
 	}
 
 
-	public function showAll()
-	{
-		$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->where('users.id', '=', Auth::id())->where('has_deleted', '=', false)->get(['categories.title as categorytitle', 'posters.id as poster_id', 'categories.id as category_id', 'users.*', 'posters.*']);
-		return view('myposts', compact('posters'));
-	}
-
     public function delete($id){
 		if(Auth::user()->role === 'admin'){
 			$poster = Poster::find($id);
@@ -95,22 +89,4 @@ class PosterManagementController extends Controller
         $id = $request->id;
         return "hello {$id}";
     }
-
-    // private function checkPosterExist($id){
-    //     if($id !== '')
-    //     {
-    //         $posters = $posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->where('users.id', '=', Auth::id())->where('posters.id', '=', $id)->get(['categories.title as categorytitle', 'posters.id as poster_id', 'categories.id as category_id', 'users.*', 'posters.*']);
-    //         if(count($posters))
-    //         {
-    //             $poster = $posters->where('id', $id);
-    //             if(count($poster)){
-    //                 foreach ($poster as $value) {
-    //                     $poster = $value;
-    //                 }
-    //                 return $poster;
-    //             }
-    //         }
-    //     }
-    //     return false;
-    // }
 }
