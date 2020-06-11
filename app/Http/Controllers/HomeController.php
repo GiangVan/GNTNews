@@ -7,17 +7,24 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 // use App\Poster;
 use App\User;
-// use App\Category;
+use App\Category;
 use App\Account;
 use App\Poster;
 
 class HomeController extends Controller
 {
-	public function index()
+	public function index($categoryId = null)
 	{
-		$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->whereNotNull('posters.id_approver')->where('has_deleted', '=', false)->orderBy('posters.created_at', 'desc')->get(['categories.title as categorytitle', 'users.*', 'posters.*']);
+		if($categoryId){
+			$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->whereNotNull('posters.id_approver')->where('posters.id_category', '=', $categoryId)->where('has_deleted', '=', false)->orderBy('posters.created_at', 'desc')->get(['categories.title as categorytitle', 'users.*', 'posters.*']);
+			
+		} else {
+			$posters = DB::table('categories')->join('posters', 'posters.id_category', '=', 'categories.id')->join('users', 'users.id', '=', 'posters.id_creator')->whereNotNull('posters.id_approver')->where('has_deleted', '=', false)->orderBy('posters.created_at', 'desc')->get(['categories.title as categorytitle', 'users.*', 'posters.*']);
+
+		}
 		$user = Auth::user();
-		return view('home', compact('posters', 'user'));
+		$categories = Category::all();
+		return view('home', compact('posters', 'user', 'categories', 'categoryId'));
 	}
 
 	public function showDetailPoster($id)

@@ -41,7 +41,7 @@
                 <div class="card-body">
 					<a href="/poster/add" class="w-100 mb-5 btn btn-warning">Viết bài mới</a>
 				
-                    @if ($posters)       
+                    @if (count($posters))       
                         <table style="text-align:left">
                             <tr>
                                 <th>STT</th>
@@ -72,19 +72,17 @@
                                     <td>{{ $poster->viewnumber }}</td>
                                     <td>{{ $poster->author_name }}</td>
 									@if ($poster->id_approver)
-                                    <td>{{ $poster->approver_name }}</td>
+                                    	<td>{{ $poster->approver_name }}</td>
 									@else
                                         <td><a href="/poster/approve/{{ $poster->id }}" class="btn btn-success">Duyệt</a></td>
 									@endif
-                                    <td class="btn-list">
-                                        <a href="/poster/edit/{{ $poster->id }}" class="btn btn-primary">Sửa</a>
-                                        <div onclick='deletePost({{ $poster->id }})' class="btn btn-danger">Xóa</div>
+                                    <td class="btn-list d-inline-flex">
+                                        <a href="/poster/edit/{{ $poster->id }}" class="m-1 btn btn-primary">Sửa</a>
+                                        <div onclick='deletePost({{ $poster->id }})' class="m-1 btn btn-danger">Xóa</div>
                                     </td>
                                 </tr>
                             @endforeach
                         </table>
-                    @else
-                        <p>empty!</p>
                     @endif
                     
                 </div>
@@ -96,7 +94,7 @@
                 <div class="card-body">
 					<a href="/poster/add" class="w-100 mb-5 btn btn-warning">Viết bài mới</a>
 				
-                    @if ($myPosters)       
+                    @if (count($myPosters))       
                         <table id="myPosts" class='w-100' style="text-align:left">
                             <tr>
                                 <th>STT</th>
@@ -134,8 +132,6 @@
                                 </tr>
                             @endforeach
                         </table>
-                    @else
-                        <p>empty!</p>
                     @endif
                 </div>
             </div>
@@ -164,8 +160,6 @@
                                 </tr>
                             @endforeach
                         </table>
-                    @else
-                        <p>empty!</p>
                     @endif
                     
                 </div>

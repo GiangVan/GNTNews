@@ -13,14 +13,14 @@
 </style>
 
 <div class="container post my-5 overflow-hidden">
-    <div class="row flex-nowrap justify-content-center">
-        <div class="col mr-5 overflow-hidden">
+    <div class="row">
+        <div class="col-sm-12 col-lg-9 pr-lg-5 overflow-hidden">
             <h1>{{ $poster->title }}</h1>
-            <div name="content">{!! $poster->content !!}</div>
+            <div name="content" style='text-align: justify;'>{!! $poster->content !!}</div>
         </div>
 
 		@if (isset($topPosters))
-        <div class="col-md-3">
+        <div class="col-sm-12 col-lg-3 mt-sm-5 mt-lg-1">
 			<h1 class=" p-3 title text-white curved-2 text-size-14 rounded" style='background-color:gray'>Bài nổi bật</h1>
 			<ul>
 				@foreach ($topPosters as $topPoster)

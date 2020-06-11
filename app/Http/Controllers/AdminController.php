@@ -60,7 +60,7 @@ class AdminController extends Controller
 
 	protected function fetchAuthorNames(&$posters){
 		foreach($posters as &$poster){
-			if($poster->id_approver){
+			if($poster->id_creator){
 				$poster->author_name = User::find($poster->id_creator)->name;
 			}
 		}

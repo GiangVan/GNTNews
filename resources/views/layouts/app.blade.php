@@ -24,6 +24,7 @@
 	
 	<script src="/jquery/jquery-3.3.1.slim.min.js"></script>
 	<script src="/jquery/sweetalert.min.js"></script>
+	<script src="/jquery/popper.min.js"></script>
 	<!-- <script src="/jquery/jquery.dataTables.min.js"></script>
 	<script src="/jquery/dataTables.bootstrap4.min.js"></script> -->
     <script src="/bootstrap/js/bootstrap.min.js"></script>
@@ -64,11 +65,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">Đăng nhập</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">Đăng ký</a>
                                 </li>
                             @endif
                         @else
@@ -78,7 +79,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+
+									<a class="dropdown-item my-2 py-1" href="{{ url('/poster/add') }}">Viết bài</a>
+									<a class="dropdown-item my-2 py-1" href="{{ url('/admin') }}">Quản lý bài viết</a>
+									
+                                    <a class="dropdown-item my-2 py-1" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
