@@ -4,7 +4,7 @@
 <div class="container">
     <h2 class="text-center">Thêm bài mới</h2>
 
-                <div class="card-body">
+                <div class="">
                     <form action="/poster/add" method="post">
                         @csrf
                         <div class="form-group my-5">
@@ -27,7 +27,7 @@
                             </select>
                         </div>
                         <button type="submit" class="btn btn-success px-5 mr-2">Gửi bài ngay</button>
-                        <a href="/admin" class="btn btn-secondary">Hủy</a>
+                        <a href="/poster" class="btn btn-secondary">Hủy</a>
                     </form>
                 </div>
 </div>

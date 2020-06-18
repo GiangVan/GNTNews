@@ -8,13 +8,21 @@ use Illuminate\Support\Facades\DB;
 use App\Poster;
 use App\User;
 use App\Category;
+use App\Helpers\TimeConvert;
 
 class CategoryManagementController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-    }
+	}
+	
+	public function index(){
+		$category = DB::table('categories')->join('users', 'users.id', '=', 'categories.id_creator')->get(['categories.*', 'categories.id as category_id', 'categories.created_at as category_created_at', 'users.*']);
+		$this->formatCategoryDataTime($category);
+
+		return view('category/view', compact('category'));
+	}
 
     public function showEditingPage($id){
         $category = Category::find($id);
@@ -28,7 +36,7 @@ class CategoryManagementController extends Controller
         $category = Category::find($request->id);
         $category->title = $request->title;
         $category->save();
-        return view('redirect', ['url' => '/admin']);
+        return redirect('/poster');
     }
 
     public function add(Request $request){
@@ -36,7 +44,7 @@ class CategoryManagementController extends Controller
         $category->title = $request->title;
         $category->id_creator = Auth::id();
         $category->save();
-        return view('redirect', ['url' => '/admin']);
+        return redirect('/poster');
     }
 
     public function delete($id){
@@ -45,6 +53,13 @@ class CategoryManagementController extends Controller
         } catch (\Throwable $th) {
             
         }
-        return view('redirect', ['url' => '/admin']);
-    }
+        return redirect('/poster');
+	}
+	
+	
+	protected function formatCategoryDataTime(&$categories){
+		foreach($categories as &$category){
+			$category->category_created_at = TimeConvert::getDiff($category->created_at);
+		}
+	}
 }

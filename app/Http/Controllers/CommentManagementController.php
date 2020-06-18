@@ -13,7 +13,7 @@ use App\Comment;
 use Carbon\Carbon;
 use App\Helpers\TimeConvert;
 
-class CommentController
+class CommentManagementController
 {
     public function getAllComment($post_id){
 		$comments = Poster::find($post_id)->comments;

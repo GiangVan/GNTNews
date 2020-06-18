@@ -35,7 +35,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-			@if ($user->role === 'admin')
+			@if (Auth::user()->role > App\Http\Enums\AccountRoles::USER)
             <div class="card my-5">
                 <p class="card-header">Tất cả bài viết</p>
                 <div class="card-body">
@@ -55,7 +55,7 @@
                             <?php $count = 0; ?>
                             @foreach ($posters as $poster)
                                 <?php $count++; ?>
-                                <tr>
+                                <tr class='border-bottom'>
 									<td>{{$count}}</td>
                                     <td>
 										<div class="post-title d-inline-flex">
@@ -68,7 +68,7 @@
 									</td>
                                     <td>{{ $poster->categorytitle }}</td>
                                     <td>{{ $poster->time }}</td>
-                                    <td>{{ $poster->viewnumber }}</td>
+                                    <td>{{ $poster->viewnumber }} 👀</td>
                                     <td>{{ $poster->author_name }}</td>
 									@if ($poster->id_approver)
                                     	<td>{{ $poster->approver_name }}</td>
@@ -101,12 +101,13 @@
                                 <th>Thể loại</th>
                                 <th>Ngày đăng</th>
                                 <th>Lượt xem</th>
+                                <th>Được duyệt</th>
                                 <th>Tùy chọn</th>
                             </tr>
                             <?php $count = 0; ?>
                             @foreach ($myPosters as $poster)
                                 <?php $count++; ?>
-                                <tr>
+                                <tr class='border-bottom'>
 									<td>{{$count}}</td>
                                     <td>
 										<div class="post-title d-inline-flex">
@@ -119,10 +120,16 @@
 									</td>
                                     <td>{{ $poster->categorytitle }}</td>
                                     <td>{{ $poster->time }}</td>
-                                    <td>{{ $poster->viewnumber }}</td>
+                                    <td>{{ $poster->viewnumber }} 👀</td>
+                                    <td>
+										@if ($poster->id_approver === null)
+											<span>❌</span>
+										@endif
+											<span>✔</span>
+									</td>
                                     <td>
 										<div class="btn-list d-inline-flex">
-											@if ($user->role === 'admin' || $poster->id_approver === null)
+											@if (Auth::user()->role > App\Http\Enums\AccountRoles::USER || $poster->id_approver === null)
 												<a href="/poster/edit/{{ $poster->id }}" class="m-1 btn btn-primary">Sửa</a>
 											@endif
 											<div onclick='deletePost({{ $poster->id }})' class="m-1 btn btn-danger">Xóa</div>
@@ -134,38 +141,6 @@
                     @endif
                 </div>
             </div>
-
-			@if ($user->role === 'admin' && $category)
-            <div class="card my-5">
-                <p class="card-header">Quản lý thể loại</p>
-                <div class="card-body">
-					<a href="/category/add" style="margin:10px" class="mb-5 w-100 btn btn-primary">Thêm thễ loại</a>
-
-                    @if (count($category))       
-                        <table class='w-100' style="text-align:left">
-                            <tr>
-                                <th>Tên thể loại</th>
-                                <th>Người thêm</th>
-								<th>Ngày thêm</th>
-                                <th>Tùy chọn</th>
-                            </tr>
-                            @foreach ($category as $c)
-                                <tr>
-                                    <td>{{ $c->title }}</td>
-                                    <td>{{ $c->name }}</td>
-                                    <td>{{ $c->category_created_at }}</td>
-                                    <td class="btn-list">
-                                        <a href="/category/edit/{{ $c->category_id }}" class="btn btn-primary">Sửa</a>
-                                        <div onclick='deleteCategory({{ $c->category_id }})' class="btn btn-danger">Xóa</div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </table>
-                    @endif
-                    
-                </div>
-			</div>
-			@endif
         </div>
     </div>
 </div>
@@ -184,22 +159,6 @@
 		.then((willDelete) => {
 			if (willDelete) {
 				window.location.href = `/poster/delete/${id}`;
-			}
-		});
-	}
-
-	function deleteCategory(id){
-		swal({
-			title: "Bạn chắc chứ?",
-			text: "Cân nhắc kỹ trước khi quyết định!",
-			icon: "warning",
-			buttons: true,
-			dangerMode: true,
-			buttons: ['Đóng', 'Xóa']
-		})
-		.then((willDelete) => {
-			if (willDelete) {
-				window.location.href = `/category/delete/${id}`;
 			}
 		});
 	}

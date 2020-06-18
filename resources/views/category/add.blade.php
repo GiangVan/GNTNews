@@ -15,7 +15,7 @@
                             <input class="form-control" name="title" required autofocus>
                         </div>
                         <button type="submit" class="btn btn-primary px-4 mr-1">Thêm ngay</button>
-                        <a href="/admin" class="btn btn-secondary">Hủy</a>
+                        <a href="/category" class="btn btn-secondary">Hủy</a>
                     </form>
                 </div>
             </div>

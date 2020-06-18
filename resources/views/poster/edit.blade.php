@@ -4,7 +4,7 @@
 <div class="container">
     <h2 class="text-center">Sửa bài viết</h2>
 
-                <div class="card-body">
+                <div class="">
                     <form action="/poster/edit" method="post">
                         @csrf
                         
@@ -34,8 +34,8 @@
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary px-5 mr-2">Gửi bài</button>
-                        <a href="/admin" class="btn btn-secondary">Hủy</a>
+                        <button type="submit" class="btn btn-primary px-5 mr-2">Cập nhật</button>
+                        <a href="/poster" class="btn btn-secondary">Hủy</a>
                     </form>
                 </div>
 </div>

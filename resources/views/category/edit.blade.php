@@ -11,12 +11,12 @@
                     <form action="/category/edit" method="post">
                         @csrf
                         <div class="form-group">
-                            <label>Tile</label>
+                            <label>Tên thể loại</label>
                             <input class="form-control" name="title" value="{{ $category->title }}" required autofocus >
                             <input style="display:none" name="id" value="{{ $category->id }}">
                         </div>
                         <button type="submit" class="btn btn-primary px-4 mr-1">Sửa ngay</button>
-                        <a href="/admin" class="btn btn-secondary">Hủy</a>
+                        <a href="/category" class="btn btn-secondary">Hủy</a>
                     </form>
                 </div>
             </div>

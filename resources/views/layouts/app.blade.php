@@ -39,6 +39,16 @@
 		td, th{
 			padding: 10px;
 		}
+
+		.card-body{
+			max-height: 700px;
+    		overflow: auto;
+		}
+
+		.dropdown-item:hover{
+			transition: all .3s ease;
+			background-color: #dadada !important;
+		}
     </style>
     <!-- ckeditor -->
     <script src="/ckeditor/ckeditor.js"></script>
@@ -80,14 +90,17 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-									<a class="dropdown-item my-2 py-1" href="{{ url('/poster/add') }}">Viết bài</a>
-									<a class="dropdown-item my-2 py-1" href="{{ url('/admin') }}">Quản lý bài viết</a>
-									
-                                    <a class="dropdown-item my-2 py-1" href="{{ route('logout') }}"
+									<a class="dropdown-item my-2 py-2" href="{{ url('/poster/add') }}">✍ Viết bài</a>
+									<a class="dropdown-item my-2 py-2" href="{{ url('/poster') }}">📝 Quản lý bài viết</a>
+									@if (Auth::user()->role > App\Http\Enums\AccountRoles::USER)
+										<a class="dropdown-item my-2 py-2" href="{{ url('/category') }}">📃 Quản lý thể loại</a>
+									@endif
+									@if (Auth::user()->role === App\Http\Enums\AccountRoles::MASTER)
+										<a class="dropdown-item my-2 py-2" href="{{ url('/accounts') }}">👨‍🔧 Quản lý tài khoản</a>
+									@endif
+                                    <a class="dropdown-item my-2 py-2" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                                     document.getElementById('logout-form').submit();">↪ Đăng xuất</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

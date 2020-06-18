@@ -22,9 +22,8 @@ class HomeController extends Controller
 			$posters = Poster::whereNotNull('id_approver')->where('has_deleted', '=', false)->orderBy('created_at', 'desc')->get(['title', 'id', 'content']);
 
 		}
-		$user = Auth::user();
 		$categories = Category::all();
-		return view('home', compact('posters', 'user', 'categories', 'categoryId'));
+		return view('home', compact('posters', 'categories', 'categoryId'));
 	}
 
 	public function search(Request $req)
@@ -34,9 +33,8 @@ class HomeController extends Controller
 
 		if($text){
 			$posters = Poster::whereNotNull('id_approver')->where('has_deleted', '=', false)->where('content', 'like', "%{$text}%")->orderBy('created_at', 'desc')->get(['title', 'id', 'content']);
-			$user = Auth::user();
 			$categories = Category::all();
-			return view('home', compact('posters', 'user', 'categories', 'categoryId'));
+			return view('home', compact('posters', 'categories', 'categoryId'));
 		} else {
 			return $this->index($categoryId);
 		}
@@ -62,19 +60,4 @@ class HomeController extends Controller
 		$poster = Poster::find($id);
 		return view('poster/view', compact('poster'));
 	}
-
-
-
-	// public function speedtest(){
-	//     for ($i=0; $i < 1000; $i++) { 
-	//         $result = Account::selectRaw('account.*, login_session.*, account_bound.*')
-	//                             ->join('login_session', 'account.id_account', '=', 'login_session.id_account')
-	//                             ->join('account_bound', 'account.id_account', '=', 'account_bound.id_sender')
-	//                             ->where('account.id_account', '>', '0')
-	//                             ->where('login_session.id_account', '>', '0')
-	//                             ->limit(10000)
-	//                             ->get();
-	//     }
-	//     return $result;
-	// }
 }
