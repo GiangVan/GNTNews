@@ -124,8 +124,9 @@
                                     <td>
 										@if ($poster->id_approver === null)
 											<span>❌</span>
-										@endif
+										@else
 											<span>✔</span>
+										@endif
 									</td>
                                     <td>
 										<div class="btn-list d-inline-flex">
