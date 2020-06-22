@@ -43,8 +43,8 @@ class HomeController extends Controller
 	public function showDetailPoster($id)
 	{
 		$poster = Poster::find($id);
-		$topPosters = Poster::whereNotNull('posters.id_approver')->where('has_deleted', '=', false)->orderBy('viewnumber', 'desc')->limit(10)->get();
-		$relatedPosters = Poster::where('id', '!=', $poster->id)->where('id_category', '=', $poster->id_category)->where('has_deleted', '=', false)->orderBy('created_at', 'desc')->limit(10)->get();
+		$topPosters = Poster::whereNotNull('posters.id_approver')->whereNotNull('posters.id_approver')->where('has_deleted', '=', false)->orderBy('viewnumber', 'desc')->limit(10)->get();
+		$relatedPosters = Poster::where('id', '!=', $poster->id)->whereNotNull('posters.id_approver')->where('id_category', '=', $poster->id_category)->where('has_deleted', '=', false)->orderBy('created_at', 'desc')->limit(10)->get();
 		
 		if ($poster->id_approver && !$poster->has_deleted) {
 			$poster->viewnumber = $poster->viewnumber + 1;

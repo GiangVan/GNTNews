@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/search', 'HomeController@search');
 Route::get('/home/{categoryId}', 'HomeController@index');
+Route::get('/poster/view/{id}', 'HomeController@showDetailPoster');
 
 Route::middleware([\App\Http\Middleware\CheckActiveAccount::class])->group(function () {
 	Route::get('/poster', 'PosterManagementController@index');
@@ -25,7 +26,6 @@ Route::middleware([\App\Http\Middleware\CheckActiveAccount::class])->group(funct
 	Route::get('/poster/add', 'PosterManagementController@showAddingPage');
 	Route::post('/poster/add', 'PosterManagementController@add');
 	
-	Route::get('/poster/view/{id}', 'HomeController@showDetailPoster');
 	Route::get('/poster/view/private/{id}', 'HomeController@showDetailPrivatePoster');
 	
 	Route::get('/category', 'CategoryManagementController@index');
@@ -35,10 +35,10 @@ Route::middleware([\App\Http\Middleware\CheckActiveAccount::class])->group(funct
 	Route::get('/category/add', 'CategoryManagementController@showAddingPage');
 	Route::post('/category/add', 'CategoryManagementController@add');
 	
-	Route::post('comment/all/{id}', "CommentManagementController@getAllComment");
 	Route::post('comment/push', "CommentManagementController@push");
 	Route::post('comment/like', "CommentManagementController@like");
 });
+Route::post('comment/all/{id}', "CommentManagementController@getAllComment");
 
 Route::middleware([\App\Http\Middleware\CheckMasterRole::class])->group(function () {
 	Route::get('/accounts', 'AccountManagementController@index');

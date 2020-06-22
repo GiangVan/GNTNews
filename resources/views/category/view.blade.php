@@ -45,13 +45,17 @@
                     @if (count($category))       
                         <table class='w-100' style="text-align:left">
                             <tr>
+                                <th>STT</th>
                                 <th>Tên thể loại</th>
                                 <th>Người thêm</th>
 								<th>Ngày thêm</th>
                                 <th>Tùy chọn</th>
                             </tr>
+							<?php $count = 0; ?>
                             @foreach ($category as $c)
+								<?php $count++; ?>
                                 <tr class='border-bottom'>
+									<td>{{$count}}</td>
                                     <td>{{ $c->title }}</td>
                                     <td>{{ $c->name }}</td>
                                     <td>{{ $c->category_created_at }}</td>

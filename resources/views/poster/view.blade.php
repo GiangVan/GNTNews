@@ -15,7 +15,8 @@
 <div class="container post my-5 overflow-hidden">
     <div class="row">
         <div class="col-sm-12 col-lg-9 pr-lg-5 overflow-hidden">
-            <h1>{{ $poster->title }}</h1>
+            <h1 class="mb-1">{{ $poster->title }}</h1>
+            <p class="mb-b">{{ $poster->created_at }}</p>
             <div name="content" style='text-align: justify;'>{!! $poster->content !!}</div>
         </div>
 
